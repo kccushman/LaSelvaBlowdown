@@ -1,33 +1,16 @@
 ##### Read in lidar data #####
 
   # 5 m resolution canopy height rasters from 2009 and 2019
-    lidarCHM09 <- raster::raster("CHM09_res500.tif")
-    lidarCHM19 <- raster::raster("CHM19_res500.tif")
-
-  # Read bounding box of study area, convert to CRS of lidar data
-    boundBox <- rgdal::readOGR("BlowdownBoundBox.kml")
-    boundBox <- sp::spTransform(boundBox, sp::proj4string(lidarCHM09))
-    
-  # Define a slightly smaller box for cropping lidar data to remove observed edge effects  
-    cropBox <- raster::extent(boundBox)
-    cropBox@xmin <- (raster::extent(boundBox)@xmin + 5)
-    cropBox@ymin <- (raster::extent(boundBox)@ymin + 20)
-    cropBox@xmax <- (raster::extent(boundBox)@xmax - 5)
-    cropBox@ymax <- (raster::extent(boundBox)@ymax - 5)
-    
-  # Crop lidar data to bounding box    
-    CHM09mask <- raster::crop(lidarCHM09, cropBox)
-    CHM19mask <- raster::crop(lidarCHM19, cropBox)
-    CHM09mask@data@values[is.na(CHM09mask@data@values)|is.na(CHM19mask@data@values)] <- NA
-    CHM19mask@data@values[is.na(CHM09mask@data@values)|is.na(CHM19mask@data@values)] <- NA
+    lidarCHM09 <- raster::raster("CHM09_AOI_res500.tif")
+    lidarCHM19 <- raster::raster("CHM19_AOI_res500.tif")
 
   # Plot canopy height from each year  
     pal <- colorRampPalette(c("blue","lightyellow","red"))
     htBrks <- seq(-10,70,5)
     par(mar=c(1,1,1,1),oma=c(1,1,1,1))
     
-    raster::plot(CHM09mask, ext=raster::extent(boundBox), breaks=htBrks, col=pal(length(htBrks)))
-    raster::plot(CHM19mask, ext=raster::extent(boundBox), breaks=htBrks, col=pal(length(htBrks)))
+    raster::plot(lidarCHM09, breaks=htBrks, col=pal(length(htBrks)))
+    raster::plot(lidarCHM19, breaks=htBrks, col=pal(length(htBrks)))
 
 ##### Mask based on land use types #####
     
@@ -51,20 +34,20 @@
     SecondaryPoly <- ForestPoly[ForestPoly$DESCRIPTIO %in% c("Secondary Forests","Abandoned Agroforestry","Abandoned Plantation", "Selectively-logged Forests"),]
     
   # Make canopy height raster of all forest area
-    CHM09Forest <- raster::mask(CHM09mask, ForestPoly)
-    CHM19Forest <- raster::mask(CHM19mask, ForestPoly)  
+    CHM09Forest <- raster::mask(lidarCHM09, ForestPoly)
+    CHM19Forest <- raster::mask(lidarCHM19, ForestPoly)  
   
   # Make canopy height raster of old growth forest area
-    CHM09OldGrowth <- raster::mask(CHM09mask, OldGrowthPoly)
-    CHM19OldGrowth <- raster::mask(CHM19mask, OldGrowthPoly)
+    CHM09OldGrowth <- raster::mask(lidarCHM09, OldGrowthPoly)
+    CHM19OldGrowth <- raster::mask(lidarCHM19, OldGrowthPoly)
   
   # Make canopy height raster of secondary forest area    
-    CHM09Secondary <- raster::mask(CHM09mask, SecondaryPoly)
-    CHM19Secondary <- raster::mask(CHM19mask, SecondaryPoly)
+    CHM09Secondary <- raster::mask(lidarCHM09, SecondaryPoly)
+    CHM19Secondary <- raster::mask(lidarCHM19, SecondaryPoly)
   
   # Plot forest area
-  raster::plot(CHM09Forest, ext=raster::extent(boundBox), breaks=htBrks, col=pal(length(htBrks)))
-  raster::plot(CHM19Forest, ext=raster::extent(boundBox), breaks=htBrks, col=pal(length(htBrks)))
+  raster::plot(CHM09Forest, breaks=htBrks, col=pal(length(htBrks)))
+  raster::plot(CHM19Forest, breaks=htBrks, col=pal(length(htBrks)))
 
 ##### Make aboveground biomass (AGB) rasters with MC uncertainty #####
 
@@ -105,9 +88,7 @@
       AGB19 <- CHM19_low
       AGB19@data@values[!is.na(AGB19@data@values)] <-  0.47*((8.881)*CHM19_low@data@values[!is.na(CHM19_low@data@values)]^(1.021)
                                                         + rnorm(n=length(AGB19@data@values[!is.na(AGB19@data@values)]), mean = 0, sd = 19.174093))
-      AGB09 <- raster::crop(AGB09,cropBox)
-      AGB19 <- raster::crop(AGB19,cropBox)
-      
+
       # Verify location of NA pixels is the same
       # which(is.na(AGB09@data@values)!=is.na(AGB19@data@values))
       
@@ -185,16 +166,14 @@
     length(raster::mask(AGB19,SecondaryPoly)@data@values[!is.na(raster::mask(AGB19,SecondaryPoly)@data@values)])/2
     
 #### Make raster plot of mean biomass loss data ####
+    
+    # Make a raster AGB plots with height-AGB model mean values
       AGB09 <- CHM09_low
       AGB09@data@values[!is.na(AGB09@data@values)] <- 0.47*(8.881)*CHM09_low@data@values[!is.na(CHM09_low@data@values)]^(1.021)
                                                       
       AGB19 <- CHM19_low
       AGB19@data@values[!is.na(AGB19@data@values)] <- 0.47*(8.881)*CHM19_low@data@values[!is.na(CHM19_low@data@values)]^(1.021)
                                                         
-      AGB09 <- raster::crop(AGB09,cropBox)
-      AGB19 <- raster::crop(AGB19,cropBox)
-      
-
       AGBchange <- AGB09
       AGBchange@data@values <- (AGB19@data@values-AGB09@data@values)
       
@@ -389,108 +368,6 @@
       # Including recent growth
     regrowthTime2b <- (mean(AGBresults$allForest09) + avgAnnualRecent*(2018-2009) - mean(AGBresults$allForest19) - sum(recoveryEst$dAGBD[2:6]))/avgAnnualChange + 6
 
-##### New Figure 1 #####
-  # Choose extents
-    figExt <- raster::extent(c(827100,827350,1154400, 1155350))
-    lidExt <- raster::extent(c(826502,826503,1155250, 1155350))
-   
-  # Make background rasters   
-    pal <- colorRampPalette(c("black","blue","lightblue","lightyellow","lightgoldenrod1","tomato","red"))
-    htBrks <- seq(0,60,2)
-    
-    pal2 <- colorRampPalette(c("black","red"))
-    htBrks2 <- c(-100,0,100)
-    
-    figRaster09 <- raster::crop(CHM09Forest, figExt)
-    figRaster19 <- raster::crop(CHM19Forest, figExt)
-
-    figRaster09@data@values[figRaster09@data@values<0] <- 0
-    figRaster19@data@values[figRaster19@data@values<0] <- 0
-
-
-      pdf(width=6,height=8, file = "toEditfig1_June.pdf")
-        par(mfrow=c(1,3))
-        raster::plot(figRaster09, ext=raster::extent(figExt), breaks=htBrks, col=pal(length(htBrks)))
-        #raster::plot(lidExt, lwd=2, add=T, col="darkred")
-        raster::plot(figRaster19, ext=raster::extent(figExt), breaks=htBrks, col=pal(length(htBrks)))
-        #raster::plot(lidExt,lwd =2, add=T, col="darkred")
-      dev.off()
-      
-  # Choose extents
-    figExt <- raster::extent(c(826100,826600,1155090, 1155240))
-   
-  # Make background rasters   
-    pal <- colorRampPalette(c("black","blue","lightblue","lightyellow","tomato","red","darkred"))
-    htBrks <- seq(0,56,2)
-
-    figRaster09 <- raster::crop(CHM09Forest, figExt)
-    figRaster19 <- raster::crop(CHM19Forest, figExt)
-
-    figRaster09@data@values[figRaster09@data@values<0] <- 0
-    figRaster19@data@values[figRaster19@data@values<0] <- 0
-
-
-      pdf(width=8,height=7, file = "toEditfig1_JuneB.pdf")
-        par(mfrow=c(2,1), mar=c(3,3,3,0))
-        raster::plot(figRaster09, ext=raster::extent(figExt), breaks=htBrks, col=pal(length(htBrks)))
-        #raster::plot(lidExt, lwd=2, add=T, col="darkred")
-        raster::plot(figRaster19, ext=raster::extent(figExt), breaks=htBrks, col=pal(length(htBrks)))
-        #raster::plot(lidExt,lwd =2, add=T, col="darkred")
-      dev.off()
-      
-      
-  # raster::writeRaster(figRaster09, "figureCHM_09.tif", overwrite=T)
-  # raster::writeRaster(figRaster19, "figureCHM_19.tif", overwrite=T)
-  # raster::writeRaster(CHM09Forest, "allCHM_09.tif", overwrite=T)
-  # raster::writeRaster(CHM19Forest, "allCHM_19.tif", overwrite=T)
-  #     
-    
-    # Subset lidar data
-      
-      DTM <- rgdal::readGDAL("/Users/kccushman/Desktop/Chapter3/LaSelvaGIS/2006/leica_dtm.img")
-      DTMraster <- raster::raster(DTM)
-  
-      # 2009
-      cat09 <- lidR::catalog("/Users/kccushman/Desktop/Chapter3/LaSelvaGIS/2009_aligned19/")
-      lidar09 <- lidR::lasclip(cat09,lidExt)
-      lidarSp09 <- SpatialPoints(coords = data.frame(x = lidar09@data$X,
-                                                     y = lidar09@data$Y),
-                                 proj4string = sp::CRS(sp::proj4string(DTMraster)))
-      z09 <- lidar09@data$Z - raster::extract(DTMraster, lidarSp09)
-      cols09 <- pal(length(htBrks))[as.numeric(cut(z09,breaks = htBrks))]
-      
-      # 2019 - low res
-      cat19_lo <- lidR::catalog("/Users/kccushman/Desktop/Chapter3/LaSelvaGIS/La_Selva_05102019_tiles_lowDensity/")
-      lidar19_lo <- lidR::lasclip(cat19_lo,lidExt)
-      lidarSp19_lo <- SpatialPoints(coords = data.frame(x = lidar19_lo@data$X,
-                                                     y = lidar19_lo@data$Y),
-                                 proj4string = sp::CRS(sp::proj4string(DTMraster)))
-      z19_lo <- lidar19_lo@data$Z - raster::extract(DTMraster, lidarSp19_lo)
-      cols19_lo <- pal(length(htBrks))[as.numeric(cut(z19_lo,breaks = htBrks))]
-      
-      # 2019_hi - hi res
-      cat19_hi <- lidR::catalog("/Users/kccushman/Desktop/Chapter3/LaSelvaGIS/La_Selva_05102019_tiles_hiDensity/")
-      lidar19_hi <- lidR::lasclip(cat19_hi,lidExt)
-      lidarSp19_hi <- SpatialPoints(coords = data.frame(x = lidar19_hi@data$X,
-                                                     y = lidar19_hi@data$Y),
-                                 proj4string = sp::CRS(sp::proj4string(DTMraster)))
-      z19_hi <- lidar19_hi@data$Z - raster::extract(DTMraster, lidarSp19_hi)
-      cols19_hi <- pal(length(htBrks))[as.numeric(cut(z19_hi,breaks = htBrks))]
-      
-      jpeg("toEditFig1b.jpg", height=10*300, width=8*300)
-      
-        par(mfrow=c(2,1))
-        
-        plot(x = lidar09@data$Y, y = z09,
-             col=cols09, pch=20, asp=1, cex=5)
-        
-        plot(x = lidar19_hi@data$Y, y = z19_hi,
-             col=adjustcolor("grey",alpha.f = 0.5), pch=20, asp=1, cex=2)
-        points(x = lidar19_lo@data$Y, y = z19_lo,
-             col=cols19_lo, pch=20,cex=4)
-      
-      dev.off()
-      
 ##### Revision: look at AGBD loss on trails, and in higher vs. lower forests #####
       
       # Must run sections "Make raster plot of mean biomass loss data" and 
