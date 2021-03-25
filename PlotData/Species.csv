@@ -1,0 +1,386 @@
+genspcode,gencode,spcode,lsspnum,genus,species,author,family,Synonymy_and_name_history,nativeexotic,forma,wooddens,wooddenstaxlevel,wooddenssource,,,,
+ANNOSUBN,ANNO,SUBN,LS000715,Annona,subnubila,"H. Rainer, ined.",Annonaceae,Hist. Tax. Annona montana,Nativa,A,0.479,Genus,C&SAmerTrop,Aguilar 8346,G.S.Hartshorn 1133; Herb. Nac. CR,,"smallish leaves, matte with underside lighter; brown glands/domatia along mid-vein"
+APEIMEMB,APEI,MEMB,LS001802,Apeiba,membranacea,Spruce ex Benth.,Malvaceae,,Nativa,A,0.278,Genus,C&SAmerTrop,Hammel & Trainer 10868,,,
+APHESTOR,APHE,STOR,LS000665,Aphelandra,storkii,Leonard,Acanthaceae,,Nativa,A,,,,Grayum 3029,,,
+ARDIFIMB,ARDI,FIMB,LS001448,Ardisia,fimbrillifera,Lundell,Primulaceae,Sin. Auriculardisia fimbrillifera (Lundell) Lundell,Nativa,A,0.62,Genus,SAmerTrop,Hammel 10950,,,
+ARDISTAN,ARDI,STAN,LS001452,Ardisia,standleyana,P. H. Allen,Primulaceae,"Sin. Ardisia proctori Lundell, Sin. Icacorea standleyana (P.H. Allen) Lundell",Nativa,A,0.62,Genus,SAmerTrop,Aguilar 7740,,,
+ASPIDESM,ASPI,DESM,LS000739,Aspidosperma,desmanthum,Benth. ex Müll. Arg.,Apocynaceae,"Sin. Aspidosperma cruentum Woodson, Hist. Tax. A. megalocarpon, A. spruceanum",Nativa,A,0.61,Species,SAmerTrop,Aguilar 7726,,,
+ASTRALAT,ASTR,ALAT,LS000291,Astrocaryum,alatum,H. F. Loomis,Arecaceae,Sin. Hexopetion alatum (H. F. Loomis) F. Kahn & Pintaud,Nativa,P,0.508,Genus,SAmerTrop,Folsom 9400,,,
+ASTRCONF,ASTR,CONF,LS000292,Astrocaryum,confertum,H. Wendl. ex Burret,Arecaceae,,Nativa,P,0.508,Genus,SAmerTrop,M. Grayum 8970,,,
+BACTSP,BACT,SP,,Bactris,,,Arecaceae,,,P,,,,,,,no wood density in Chave compilation
+BALIELEG,BALI,ELEG,LS001065,Balizia,elegans,(Ducke) Barneby & J. W. Grimes,Fabaceae,"Sin. Pithecellobium elegans Ducke; Albizia duckeana L. Rico; 
+Hist. Tax. P. pedicellare",Nativa,A,0.495,Species,LaSelva-MullerLand,Hammel 12412,B. Hammel 17319; Herb. Nac. CR,3,
+BAUHGUIA,BAUH,GUIA,LS001050,Bauhinia,guianensis,Aubl.,Fabaceae,Sin. Bauhinia manca Standl.,Nativa,L,0.7,Genus,FrGuyana-Hoffmann et al,Hammel 9172,,,
+BAUHSP,BAUH,SP,,Bauhinia,,,Fabaceae,,Nativa,L,0.7,Genus,FrGuyana-Hoffmann et al,,,,
+BEILALLO,BEIL,ALLO,LS001218,Beilschmiedia,alloiophylla,(Rusby) Kosterm.,Lauraceae,Hist. Tax. Beilschmiedia anay,Nativa,A,0.544,Genus,C&SAmerTrop,,,,"1 stem, Clark1046, id'd by OV/JG June13"
+BEILSP.1,BEIL,SP.1,,Beilschmiedia,,,Lauraceae,"BEH  ok'd our grouping (MV#s:660,899,850,226), but said it has another name now",,A,0.544,Genus,C&SAmerTrop,,,,not anay (but we did hit on what he had been calling anay)
+BEILSP.2,BEIL,SP.2,,Beilschmiedia,,,Lauraceae,MV 630 and 659;may be B. mexicana (BEH),,A,0.544,Genus,C&SAmerTrop,,,,
+BEILSP.3,BEIL,SP.3,,Beilschmiedia,,,Lauraceae,"MV#595; BEH says  closest to Beil. No.1, but lf pubescent- maybe juv.",,,0.544,Genus,C&SAmerTrop,,,,it also looked almost like a spec. they have of B. sulcata; may be 3rd LS sp (BEH)
+BEILSP.A,BEIL,SP.A,LS002467,Beilschmiedia,sp. A,?,Lauraceae,"Hist. Tax. Beilschmiedia anay, B. sulcata",nativa,A,0.544,Genus,C&SAmerTrop,Hammel 13354,,,id'd by JG/OV June13
+BESLCOLU,BESL,COLU,LS001169,Besleria,columneoides,Hanst.,Gesneriaceae,,Nativa,A,,,,Aguilar 7718,,,
+BOROPANA,BORO,PANA,LS001599,Borojoa,panamensis,Dwyer,Rubiaceae,Sin. Borojoa atlantica Dwyer,Nativa,A,0.52,Genus,SAmerTrop,O. Vargas  1359,,,
+BOROPATI,BORO,PATI,LS002465,Borojoa,patinoi,Cuatrec.,Rubiaceae,,Nativa de CR Plantada en LS,A,0.52,Genus,SAmerTrop,O. Vargas 1671,,,***DF says planted at LS; 1 stem
+BROSGUIA,BROS,GUIA,LS001408,Brosimum,guianense,(Aubl.) Huber,Moraceae,,Nativa,A,0.843,Species,SAmerTrop,Hammel 13071,,,
+BROSLACT,BROS,LACT,LS001409,Brosimum,lactescens,(S. Moore) C. C. Berg,Moraceae,,Nativa,A,0.656,Species,SAmerTrop,B.Hammel & J.Trainer 13256,,,
+BYRSARTH,BYRS,ARTH,LS001275,Byrsonima,arthropoda,A. Juss.,Malpighiaceae,Hist. Tax. Byrsonima crispa,Nativa,A,0.62,Species,SAmerTrop,B. Hammel 12986,,,
+CALOBRAS,CALO,BRAS,LS000918,Calophyllum,brasiliense,Cambess.,Calophyllaceae,Sin. Calophyllum rekoi Standl.,Nativa,A,0.47,Species,CostaRica-Malavass,Aguilar 7942,,,
+CARANICA,CARA,NICA,LS001381,Carapa,nicaraguensis,Audl.,Meliaceae,Hist. Tax. Carapa  guianensis,Nativa,A,0.415,Species,"CentAmerTrop,LS-MullerLandau",Hartshorn 1274,,,
+CARPPLAT,CARP,PLAT,LS001152,Carpotroche,platyptera,Pittier,Achariaceae,"Sin. Carpotroche crassiramea Pittier, Sin. Carpotroche glaucescens Pittier",Nativa,A,0.45,Genus,South America (tropical),Aguilar 8422,,,
+CARYANGU,CARY,ANGU,LS001011,Caryodendron,angustifolium,Standl.,Euphorbiaceae,"confirmed by BEH;gave him 3 spec.s, for Inbio, Herb.Nac.,and maybe MoBot",Nativa,A,0.65,Genus,South America (tropical),Aguilar 8247,,,"New genus & sp for LS, from MV"
+CASE-99,CASE,-99,,Casearia,,,Salicaceae,,,A,,,,,,,1 stem
+CASEARBO,CASE,ARBO,LS001153,Casearia,arborea,(Rich.) Urb.,Salicaceae,,Nativa,A,0.57,Species,LaSelva-King,Hammel 9315,B.Hammel&J.Trainer 12766; Herb. Nac. CR,,
+CASECOMM,CASE,COMM,LS001154,Casearia,commersoniana,Cambess.,Salicaceae,,Nativa,A,0.582,Genus,C&SAmerTrop,Hammel 8194,G.S. Hartshorn 1360; Herb. Nac. CR,,
+CASETACA,CASE,TACA,LS001158,Casearia,tacanensis,Lundell,Salicaceae,,native,A,0.582,C&SAmerTrop,Genus,,,,
+CASSELLI,CASS,ELLI,LS001596,Cassipourea,elliptica,(Sw.) Poir.,Rhizophoraceae,,Nativa,A,0.82,Genus,SAmerTrop,Hammel 9094,,,
+CASTELAS,CAST,ELAS,LS001410,Castilla,elastica,Sessé,Moraceae,,Nativa,A,0.315,Species,CostaRica-WiemWill,Aguilar 7934,,,
+CECRINSI,CECR,INSI,LS000902,Cecropia,insignis,Liebm.,Urticaceae,,Nativa,A,0.309,Species,LaSelva-MullerLand,B. Hammel 11129,,4,
+CECROBTU,CECR,OBTU,LS000903,Cecropia,obtusifolia,Bertol.,Urticaceae,,Nativa,A,0.26,Species,CostaRica-WiemWill,O. Vargas  752,,1,
+CEDRODOR,CEDR,ODOR,LS001382,Cedrela,odorata,L.,Meliaceae,Sin. Cedrela mexicana Roem.,Nativa,A,0.407,Species,Central America (tropical),B.Hammel & J.Trainer 10818,,,1 stem
+CEIBPENT,CEIB,PENT,LS000856,Ceiba,pentandra,(L.) Gaertn.,Malvaceae,,Nativa,A,0.3922271,Species,La Selva- MullerLandau,O. Vargas  557,Karsten Thomsen 1106; Herb. Nac. CR,,"short petiolules, very pointy, slender leaflets; long-acuminate"
+CESPSPAT,CESP,SPAT,LS001479,Cespedesia,spathulata,(Ruiz & Pav.) Planch.,Ochnaceae,Sin. Cespedesia macrophylla Seem.,Nativa,A,0.545,Species,LaSelva-WiemWill,Aguilar 8279,,,
+CESTMICR,CEST,MICR,LS002367,Cestrum,microcalyx,Francey,Solanaceae,??? Best guessed match; to check in field in 2013,Nativa,A,,,,Aguilar 7676,,,no wood density in Chave compilation
+CHAMSP,CHAM,SP,,Chamaedorea,,,Arecaceae,,,P,,,,,,,10 stems
+CHIMPARV,CHIM,PARV,LS001600,Chimarrhis,parviflora,Standl.,Rubiaceae,,Nativa,A,0.711,Genus,SAmerTrop,Hammel 9753,,,
+CHRYCOLO,CHRY,COLO,LS001736,Chrysophyllum,colombianum,(Aubrév.) T. D. Penn.,Sapotaceae,,Nativa,A,0.774,Genus,C&SAmerTrop,G. Hartshorn 1023,,,
+CHRYGLAU,CHRY,GLAU,LS000919,Chrysochlamys,glauca,"(Oerst., Planch. & Triana) Hemsl",Clusiaceae,Sin. Tovomitopsis glauca Oerst.,Nativa,A,,,,Hammel 8771,,,no wood density in Chave compilation
+CHRYSILV,CHRY,SILV,LS000921,Chrysochlamys,silvicola,(Hammel) Hammel,Clusiaceae,Sin. Tovomitopsis silvicola Hammel,Nativa,A,0.43,Genus,SAmerTrop,Hammel 10965,,,"1 large stem, id'd by JG/OV June13 from Clark#1141"
+CHRYVENE,CHRY,VENE,LS001737,Chrysophyllum,venezuelanense,(Pierre) T. D. Penn.,Sapotaceae,Sin. Pouteria lucentifolia (Standl.) Boehni,Nativa,A,0.774,Genus,C&SAmerTrop,Aguilar 7666,,,
+CINNCHAV,CINN,CHAV,LS001220,Cinnamomum,chavarrianum,(Hammel) Kosterm.,Lauraceae,Sin. Phoebe chavarriana  Hammel,Nativa,A,0.47,Genus,SAmerTrop,Aguilar 7987,Alvaro Fernandez 389-INBIO,,"our spec.s checked by NZ,BEH"
+CLARMEXI,CLAR,MEXI,LS001411,Clarisia,mexicana,(Liebm.) Lanj.,Moraceae,Hist. Tax. Clarisia biflora,Nativa,A,0.52,Species,Mexico,G. Hartshorn 1477,,,
+CLETCOST,CLET,COST,LS000917,Clethra,costaricensis,Britton,Clethraceae,"Hist. Tax. Clethra mexicana A. DC., Hist. Tax. Clethra lanata M. Martens & Galeotti",Nativa,A,0.52,Genus,South America (tropical),Aguilar 8152,,,
+CLETHOND,CLET,HOND,LS002539,Clethra,hondurensis,Britton,Clethraceae,,Nativa,A,0.52,Genus,South America (tropical),O. Vargas 1248,,,
+CLIDDENS,CLID,DENS,LS001315,Clidemia,densiflora,(Standl.) Gleason,Melastomataceae,,Nativa,A,,,,Hammel 8750,,,no wood density in Chave compilation
+CLIDHAMM,CLID,HAMM,LS001319,Clidemia,hammelii,Almeda,Melastomataceae,,Nativa,A,,,,Hammel 9682,,,no wood density; 3 SMALL stems (1 tree) in L2
+COJOSP.A,COJO,SP.A,LS001067,Cojoba,sp. A,?,Fabaceae,Hist. Tax.  Cojoba valerioi,Nativa,A,,,,Hammel 8672,,,MV; no wood density for genus in Chave
+COLUSPIN,COLU,SPIN,LS001593,Colubrina,spinosa,Donn. Sm.,Rhamnaceae,,Nativa,A,0.495,Species,LaSelva-MullerLand,B.Hammel 10622,,,
+COMPMEXI,COMP,MEXI,LS001441,Compsoneura,mexicana,(Hemsl.) Janovec,Myristicaceae,Hist. Tax. Compsoneura sprucei,Nativa,A,,,,Aguilar 7650,,,no wood density in Chave compilation
+CONCPLEI,CONC,PLEI,LS001012,Conceveiba,pleiostemona,Donn. Sm.,Euphorbiaceae,Sin. Veconcibea pleiostemona (Donn. Sm.) Pax & K. Hoffm.,Nativa,A,0.266,Species,LaSelva-MullerLand,Aguilar 8211,,,
+CONOBRAC,CONO,BRAC,LS001327,Conostegia,bracteata,Triana,Melastomataceae,,Nativa,A,,,,Aguilar 7724,,,no wood density for genus; 2 stems
+CONOMICR,CONO,MICR,LS001330,Conostegia,micrantha,Standl.,Melastomataceae,,Nativa,A,,,,Hammel 8227,,,no wood density; 1 stem
+CONOMONT,CONO,MONT,LS001331,Conostegia,montana,(Sw.) D. Don,Melastomataceae,,Nativa,A,,,,Aguilar 7575,,,"1 stem; 1 small, id'd by OV/JG"
+CORDALLI,CORD,ALLI,LS000865,Cordia,alliodora,(Ruiz & Pav.) Oken,Boraginaceae,,Nativa,A,0.425,Species,Central America (tropical),Hartshorn 1343,,,MV
+CORDBICO,CORD,BICO,LS000866,Cordia,bicolor,A. DC.,Boraginaceae,,Nativa,A,0.475,Species,SAmerTrop,G. Hartshorn 1482,G.S. Hartshorn 1482; Herb. Nac. CR,,"distinctly angular bicolored leaf, whitish underneath, asperous"
+CORDDWYE,CORD,DWYE,LS000870,Cordia,dwyeri,Nowicke,Boraginaceae,,Nativa,A,0.505,Genus,Mex&C&SAmerTrop,Hammel 11094,Karsten Thomsen 1138; Herb. Nac. CR,,"very big leaf, very furry underneath"
+CORDPORC,CORD,PORC,LS000874,Cordia,porcata,Nowicke,Boraginaceae,Hist. Tax. Cordia protracta,Nativa,A,0.505,Genus,Mex&C&SAmerTrop,"Aguilar 7614,  Hammel 8289",,,2 stems in L6; MV (note from 2003: protracta fide B.H.); also noted as riparian
+COUEPOLY,COUE,POLY,LS000910,Couepia,polyandra,(Kunth) Rose,Chrysobalanaceae,,Nativa,A,0.74,Species,Mexico,G. Hartshorn 1287,G.S. Hartshorn 1287; Herb. Nac. CR,,"leaf brillante above, whitish below, many parallel sec.s, with some joining irregularly"
+COUS1086,COUS,1086,,Coussarea,,,Rubiaceae,,,A,0.61,Genus,SAmerTrop,,,,1 stem
+COUS9,COUS,9,,Coussarea,,,Rubiaceae,,,A,0.61,Genus,SAmerTrop,,,,1 stem
+COUS983,COUS,983,,Coussarea,,,Rubiaceae,,,A,0.61,Genus,SAmerTrop,,,,1 stem
+COUSHOND,COUS,HOND,LS001605,Coussarea,hondensis,(Standl.) C. M. Taylor & W. C. Burger,Rubiaceae,"Sin. Psychotria ostaurea Dwyer & M. V. Hayden, Hist. Tax. C. taurina; Psychotria hondensis?",Nativa,A,0.61,Genus,SAmerTrop,T. McDowell 1001,,,
+COUSNIGR,COUS,NIGR,LS001607,Coussarea,nigrescens,C. M. Taylor & Hammel,Rubiaceae,,Nativa,A,0.61,Genus,SAmerTrop,B. Hammel 10383,,,
+COUSPSYC,COUS,PSYC,LS001608,Coussarea,psychotrioides,C. M. Taylor & Hammel,Rubiaceae,,Nativa,A,0.61,Genus,SAmerTrop,Aguilar 7937,,,
+COUSTALA,COUS,TALA,LS001609,Coussarea,talamancana,Standl.,Rubiaceae,,Nativa,A,0.61,Genus,SAmerTrop,G. Hartshorn 1499,,,
+COUTHEXA,COUT,HEXA,LS001610,Coutarea,hexandra,(Jacq.) K. Schum.,Rubiaceae,,Nativa,A,0.6,Species,SAmerTrop,B. Hammel 11145,,,1 stem; L5; id'd by JG/OV June13
+CROTSCHI,CROT,SCHI,LS001016,Croton,schiedeanus,Schltdl.,Euphorbiaceae,,Nativa,A,0.4,Species,Central America (tropical),J. González 7735,,,
+CRYOWARS,CRYO,WARS,LS000306,Cryosophila,warscewiczii,(H. Wendl.) Bartlett,Arecaceae,Sin. Cryosophila albida Bartlett,Nativa,P,0.418,Genus,Mex&SAmerTrop,Hammel 8149,,,
+CUPADENT,CUPA,DENT,LS002635,Cupania,dentata,DC.,Sapindaceae,,Nativa,A,0.66,Species,Mexico,,,,3 stems in P5
+CUPAPSEU,CUPA,PSEU,LS001714,Cupania,pseudostipularis,T. D. Penn. ined.,Sapindaceae,Hist. Tax. Cupania livida,Nativa,A,0.629,Genus,Mex&C&SAmerTrop,Hammel 9696,,,
+CUPASP,CUPA,SP,,Cupania,,,Sapindaceae,,,A,0.629,Genus,Mex&C&SAmerTrop,,,,2 stems
+CYMBCOST,CYMB,COST,LS000718,Cymbopetalum,costaricense,(Donn. Sm.) Saff.,Annonaceae,,Nativa,A,0.535,Genus,Mex&SAmerTrop,D. Smith 209,,,
+CYMBTORU,CYMB,TORU,LS000719,Cymbopetalum,torulosum,G. E. Schatz,Annonaceae,,Nativa,A,0.535,Genus,Mex&SAmerTrop,Aguilar 7757,,,
+DALB1087,DALB,1087,,Dalbergia,,,Fabaceae,"four spp at LS, 2 listed as native",,A,0.804,Genus,Mex&C&SAmerTrop,,,,2 stems
+DENDARBO,DEND,ARBO,LS000760,Dendropanax,arboreus,(L.) Decne. & Planch.,Araliaceae,,Nativa,A,0.429,Species,LaSelva-MullerLand,Hammel 9102,G.S. Hartshorn 1525; Herb. Nac. CR,,
+DESMSCHI,DESM,SCHI,LS000721,Desmopsis,schippii,Standl.,Annonaceae,Sin. Desmopsis brevipes R. E. Fr.,Nativa,A,0.7641177,Genus,Central America (tropical),O. Vargas  1362,,,
+DICHAXIL,DICH,AXIL,LS000979,Dichapetalum,axillare,Woodson,Dichapetalaceae,,Nativa,A,0.7605,Genus,Australia,Aguilar 7715,,,1 small in P5; id'd by JG/OV June13; was initially id'd as Licania sp.A
+DICHGRAY,DICH,GRAY,LS000983,Dichapetalum,grayumii,Prance,Dichapetalaceae,"Hist. Tax. Dichapetalum stipulatum, Dichapetalum nervatum",Nativa,A,0.7605,Genus,Australia,Aguilar 8122,,,
+DIPTPANA,DIPT,PANA,LS001120,Dipteryx,panamensis,(Pittier) Record & Mell,Fabaceae,"Sin. Coumarouna panamensis Pittier, Sin. Oleiocarpon panamense (Pittier) Dwyer",Nativa,A,0.84,Species,LaSelva-King,Aguilar 7689,R. Robles 1199; Herb. Nac. CR,9,
+DRYPSTAN,DRYP,STAN,LS001021,Drypetes,standleyi,G. L. Webster,Putranjivaceae,Hist. Tax. Drypetes brownii,Nativa,A,0.675,Species,CAmerTrop(BCI)-MullerLand,Hammel 9166,,,
+DUSSMACR,DUSS,MACR,LS001121,Dussia,macroprophyllata,(Donn. Sm.) Harms,Fabaceae,Hist. Tax. Dussia tessmannii,Nativa,A,0.563,Species,LaSelva-MullerLand,Aguilar 7906,,,
+DUSSMUND,DUSS,MUND,,Dussia,,,Fabaceae,"""munda"" - NZ in 2003 said a tree was near SHA850 - Orlando may know; 3-5 glabrous lflets",,A,,,,,,,we don't have a specimen - listing is just to keep NZ comment on 3rd sp at LS
+DUSSSP,DUSS,SP,,Dussia,,,Fabaceae,,,A,0.552,Genus,Mex&C&SAmerTrop,,,,1 stem
+DUSSSPB,DUSS,SPB,LS001122,Dussia,sp. B,,Fabaceae,"Hist. Tax. D. cuscatlanica, D. atropurpurea , D. sp A",Nativa,A,0.552,Genus,Mex&C&SAmerTrop,B. Hammel 10560,,,
+DYSTPANI,DYST,PANI,LS000933,Dystovomita,paniculata,(Donn. Sm.) Hammel,Clusiaceae,Sin. Dystovomita pittieri (Engl.) D'Arcy,Nativa,A,,,,Hammel 10966,,,no wood density for genus in Chave compilation
+ELAEGLAB,ELAE,GLAB,not yet,Elaeoluma,glabrescens,(Mart. & Eichler) Aubrev.,Sapotaceae,,Nativa,A,,,,,,,no wood density
+ERYTFIMB,ERYT,FIMB,LS000997,Erythroxylum,fimbriatum,Peyr.,Erythroxylaceae,,Nativa,A,0.765,Genus,Mex&SAmerTrop,Aguilar 8175,,,
+ERYTMACR,ERYT,MACR,LS000998,Erythroxylum,macrophyllum,Cav.,Erythroxylaceae,Sin. Erythroxylum lucidum Kunth,Nativa,A,0.71,Species,SAmerTrop,Hammel 8904,"L.J.Poveda & N.Zamora, Dendrologia II 3640; Herb. Nac. CR",,"stipules are striated, but vary greatly in size."
+ESCHCOLL,ESCH,COLL,LS001252,Eschweilera,collinsii,Pittier,Lecythidaceae,"Sin. E. longirachis S. A. Mori, Hist. Tax. Eschweilera calyculata",Nativa,A,0.778,Species,SAmerTrop,Aguilar 7831,,,"wood density for species ""collina"", not ""collinsIi"""
+EUGE1179,EUGE,1179,,Eugenia,,,Myrtaceae,,,A,0.757,Genus,Mex&C&SAmerTrop,,,,1 stem
+EUGE1295,EUGE,1295,,Eugenia,,,Myrtaceae,,,A,0.757,Genus,Mex&C&SAmerTrop,,,,1 stem
+EUGE945,EUGE,945,,Eugenia,,,Myrtaceae,,,A,0.757,Genus,Mex&C&SAmerTrop,,,,1 stem
+EUGEBASI,EUGE,BASI,LS002485,Eugenia,basilaris,McVaugh,Myrtaceae,,Nativa,A,0.757,Genus,Mex&C&SAmerTrop,Gentry 78520,,,id'd by JG/OV June13
+EUGECORU,EUGE,CORU,LS002421,Eugenia,corusca,Barrie,Myrtaceae,,Nativa,A,0.757,Genus,Mex&C&SAmerTrop,Hammel 11693,,,2 stems
+EUGEGLAN,EUGE,GLAN,LS001461,Eugenia,glandulosopunctata,P. E. Sánchez & Poveda,Myrtaceae,,Nativa,A,0.757,Genus,Mex&C&SAmerTrop,,,,no LS voucher in 2007 list
+EUGEHAMM,EUGE,HAMM,LS002422,Eugenia,hammelii,Barrie,Myrtaceae,,Nativa,A,0.757,Genus,Mex&C&SAmerTrop,B. Hammel 9318,,,
+EUGEHART,EUGE,HART,LS002423,Eugenia,hartshornii,Barrie,Myrtaceae,Hist. Tax. E. sarapiquensis; Myrcia carnea,Nativa,A,0.757,Genus,Mex&C&SAmerTrop,Hartshorn 1249,,,
+EUGELITH,EUGE,LITH,LS002424,Eugenia,lithosperma,Barrie,Myrtaceae,,Nativa,A,0.757,Genus,Mex&C&SAmerTrop,Bawa 594,,,id'd by JG/OV
+EUGESELV,EUGE,SELV,LS002426,Eugenia,selvana,Barrie,Myrtaceae,Hist. Tax. Myrciaria floribunda,Nativa,A,0.757,Genus,Mex&C&SAmerTrop,Hammel 8608,,,
+EUGESP,EUGE,SP,,Eugenia,,,Myrtaceae,,,A,0.757,Genus,Mex&C&SAmerTrop,,,,4 stems
+EUTEPREC,EUTE,PREC,LS000309,Euterpe,precatoria,Mart.,Arecaceae,Sin. Euterpe macrospadix Oerst.,Nativa,P,0.35,Species,LaSelva-Rich,B. Hammel 11630,,,
+FARAE,FARA,E,,Faramea,,,Rubiaceae,"??? ""E"" for sp?  Genus right?",,A,0.584,Genus,Mexico&BCI,,,,1 stem
+FARAGLAN,FARA,GLAN,LS001613,Faramea,glandulosa,Poepp. & Endl.,Rubiaceae,Sin. Faramea  stenura Standl.,Nativa,A,0.584,Genus,Mexico&BCI,Hammel 10992,,,
+FARAMULT,FARA,MULT,LS001611,Faramea,multiflora,A. Rich.,Rubiaceae,Sin. Faramea  talamancarum Standl.,Nativa,A,0.584,Genus,Mexico&BCI,Hammel 11040,,,
+FARAPARV,FARA,PARV,LS001612,Faramea,parvibractea,Steyerm.,Rubiaceae,,Nativa,A,0.584,Genus,Mexico&BCI,Aguilar 7827,,,
+FARASUER,FARA,SUER,LS001614,Faramea,suerrensis,(Donn. Sm.) Donn. Sm.,Rubiaceae,,Nativa,A,0.584,Genus,Mexico&BCI,Aguilar 7599,,,
+FARATRIC,FARA,TRIC,,Faramea,,,Rubiaceae,Genus? - no match in Faramea,,A,0.584,Genus,Mexico&BCI,,,,check genus in field if no specimen
+FICU1080,FICU,1080,,Ficus,,,Moraceae,,,A,0.384,Genus,Mex&C&SAmerTrop,,,,1 stem
+FICUGLAU,FICU,GLAU,LS002599,Ficus,glaucescens,(Liebm.) Miq.,Moraceae,Hist. Tax.  F. maxima,Nativa,A,0.384,Genus,Mex&C&SAmerTrop,,,,1 stem; Clark1113; id'd by JG/OV June13
+GARCINTE,GARC,INTE,LS000934,Garcinia,intermedia,(Pittier) Hammel,Clusiaceae,Sin. Rheedia  edulis (Seem.) Planch. & Triana,Nativa,A,0.625,Species,BCI-MullerLand,Aguilar 8053,,,
+GEONCONG,GEON,CONG,LS000310,Geonoma,congesta,H. Wendl. ex Spruce,Arecaceae,,Nativa,P,,,,Aguilar 7794,,,no wood density for genus in Chave compilation
+GLOEDIVE,GLOE,DIVE,,Gloeospermum,diversipetalum,L.O.Williams,Violaceae,,Nativa,A,0.596,Family,CAmerTrop (just Rinorea),,,,Clark1189 id'd by JG/OV June13; this species isn't yet in the La Selva lists (July13)
+GOETMEIA,GOET,MEIA,LS001803,Goethalsia,meiantha,(Donn. Sm.) Burret,Malvaceae,,Nativa,A,0.351,Species,LaSelva-King&MullerLandau,O. Vargas  725,,,
+GRIACAUL,GRIA,CAUL,LS001253,Grias,cauliflora,L.,Lecythidaceae,Sin. Grias fendleri Seem.,Nativa,A,0.62,Genus,SAmerTrop,Aguilar 7961,,,
+GUARBULL,GUAR,BULL,LS001384,Guarea,bullata,Radlk.,Meliaceae,,Nativa,A,0.577,Genus,Mex&C&SAmerTrop,Hammel 8940,,,
+GUARCILI,GUAR,CILI,LS002366,Guarea,ciliata,Al. Rodr.?,Meliaceae,Sin Guarea ternifoliola sensu Coronado non C. DC.,Nativa,A,0.577,Genus,Mex&C&SAmerTrop,O. Vargas 1068,,,"Clark1240; id'd by JG/OV June13; they inserted the ""?"" after the author"
+GUARGENT,GUAR,GENT,LS001390,Guarea,gentryi,Coronado,Meliaceae,"Sin. Guarea tuerckheimii C. DC., Hist. Tax. G. guidonia",Nativa,A,0.577,Genus,Mex&C&SAmerTrop,B. Hammel 12844,,,***** check that this change is really the right one (and what does the real guidonia look like?)
+GUARGUID,GUAR,GUID,LS002416,Guarea,guidonia,(L.) Sleumer?,Meliaceae,"Sin. Guarea trichilioides L., Guarea xiroresana C. DC.",Nativa,A,0.548,Species,SAmerTrop,O. Vargas  1223,,,"3 stems; Clark1181, id'd by JG/OV (they added the ""?"" to the author)"
+GUARHOFF,GUAR,HOFF,LS001387,Guarea,hoffmanniana,C. DC.,Meliaceae,Sin. Guarea macropetala T. D. Penn.,Nativa,A,0.577,Genus,Mex&C&SAmerTrop,Folsom 9843,,,
+GUARPILO,GUAR,PILO,LS001383,Guarea,pilosa,Al. Rodr.,Meliaceae,"Hist. Tax. Guarea tonduzii, Guarea chiricana",Nativa,A,0.577,Genus,Mex&C&SAmerTrop,Aguilar 8421,,,
+GUARRHOP,GUAR,RHOP,LS001389,Guarea,rhopalocarpa,Radlk.,Meliaceae,Sin. G. tuisana C. DC.,Nativa,A,0.577,Genus,Mex&C&SAmerTrop,Aguilar 8109,,,
+GUARSP,GUAR,SP,,Guarea,,,Meliaceae,,,A,0.577,Genus,Mex&C&SAmerTrop,,,,1 stem
+GUATAERU,GUAT,AERU,LS000722,Guatteria,aeruginosa,Standl.,Annonaceae,,Nativa,A,0.535,Genus,C&SAmerTrop,O. Vargas  726,Celso Alvarado 50; Herb. Nac. CR,,fur ferrugineous
+GUATAMPL,GUAT,AMPL,LS000723,Guatteria,amplifolia,Triana & Planch.,Annonaceae,"Sin. Guatteria diospyroides Baill., Guatteria inuncta R. E. Fr., Sin. Guatteria platypetala R. E. Fr.",Nativa,A,0.511,Species,LaSelva-MullerLand,Aguilar 8206,"W.S.Alverson,R.Marquis&O.Vargas s.n.; Herb. Nac. CR",,almost bullate on top
+GUATRECU,GUAT,RECU,LS000724,Guatteria,recurvisepala,R. E. Fr.,Annonaceae,,Nativa,A,0.535,Genus,C&SAmerTrop,B.Hammel 11605,"B.Hammel 11605 (LS,S.Bdry); Herb. Nac. CR",,tertiaries almost invisible; leaf somewhat pubescent
+HAMPAPPE,HAMP,APPE,LS001287,Hampea,appendiculata,(Donn. Sm.) Standl.,Malvaceae,,Nativa,A,0.245,Species,LaSelva-WiemWilli,Grayum 2960,,,
+HANDCHRY,HAND,CHRY,LS000853,Handroanthus,chrysanthus,(Jacq.) S. O. Grose,Bignoniaceae,Sin. Tabebuia chrysantha,Nativa,A,1.03,Species,Mex&SAmerTrop,Jacobs  3036,,,"most common ""Tabebuia"" at LS; covered in hairs"
+HANDGUAY,HAND,GUAY,LS000854,Handroanthus,guayacan,(Seem.) S. O. Grose,Bignoniaceae,Sin. Tabebuia guayacan,Nativa,A,0.774,Genus,Mex&C&SAmerTrop,O. Vargas 1673,,,
+HEDYSCAB,HEDY,SCAB,LS000909,Hedyosmum,scaberrimum,Standl.,Chloranthaceae,Hist. Tax. H. callososerratum,Nativa,A,0.45,Genus,South America (tropical),Hammel 8181,,,
+HEISCONC,HEIS,CONC,LS001484,Heisteria,concinna,Standl.,Erythropalaceae,,Nativa,A,0.64,Species,LaSelva-WiemWilli,Aguilar 8336,,,
+HENRTUBE,HENR,TUBE,LS001337,Henriettella,tuberculosa,(Donn. Sm.) L. O. Williams,Melastomataceae,Sin. Henriettea tuberculosa (Donn. Sm.) L.O. Williams,Nativa,A,0.47,Species,SAmerTrop,Aguilar 7709,,,
+HERNDIDY,HERN,DIDY,LS001201,Hernandia,didymantha,Donn. Sm.,Hernandiaceae,,Nativa,A,0.309,Species,LaSelva-MullerLand,Aguilar 7656,,,
+HERRPURP,HERR,PURP,LS001793,Herrania,purpurea,(Pittier) R. E. Schult.,Malvaceae,,Nativa,A,,,,Aguilar 8248,,,no density for genus in Chave
+HIERALCH,HIER,ALCH,LS001030,Hieronyma,alchorneoides,Allemão,Phyllanthaceae,Sin. Hieronyma laxiflora (Tul.) Müll. Arg. ???,Nativa,A,0.557,Species,LaSelva-MullerLandau & CostaRica-Malavass,Aguilar 8166,Allemão T. Chacón 751; Herb. Nac. CR,7,
+HIEROBLO,HIER,OBLO,LS001031,Hieronyma,oblonga,(Tul.) Müll. Arg.,Phyllanthaceae,,Nativa,A,0.603,Species,SAmerTrop,Aguilar 8197,,,
+HIRTLEMS,HIRT,LEMS,LS000911,Hirtella,lemsii,L. 0. Williams & Prance,Chrysobalanaceae,,Nativa,A,0.767,Genus,C&SAmerTrop,Aguilar 8104,I.A.Chacon G. 747; Herb. Nac. CR,,"twig very pubescent, lvs pointy, acuminate,pubescent,sessile"
+HYMEMESO,HYME,MESO,LS001128,Hymenolobium,mesoamericanum,H. C. Lima,Fabaceae,Hist. Tax. Hymenolobium pulcherrimum,Nativa,A,0.668,Genus,SAmerTrop,O. Vargas  572,R. Aguilar 19; Herb. Nac. CR,8,
+ILEXSKUT,ILEX,SKUT,LS000759,Ilex,skutchii,Edwin ex T. R. Dudley & W. J. Hahn,Aquifoliaceae,,Nativa,A,0.569,Genus,C&SAmerTrop,O. Vargas  720,B.Hammel & M. Grayum 14124; Herb. Nac. CR,,
+INGA1042,INGA,1042,,Inga,,,Fabaceae,,,A,0.577,Genus,Mex&C&SAmerTrop,,,,1 stem
+INGAACUM,INGA,ACUM,LS001070,Inga,acuminata,Benth.,Fabaceae,,Nativa,A,0.577,Genus,Mex&C&SAmerTrop,Hammel 13084,,,
+INGAALBA,INGA,ALBA,LS001071,Inga,alba,(Sw.) Willd,Fabaceae,Hist. Tax. Inga longispica,Nativa,A,0.586,Species,SAmerTrop,B.Hammel 9846,,,
+INGACOCL,INGA,COCL,LS001073,Inga,cocleensis,Pittier,Fabaceae,,Nativa,A,0.577,Genus,Mex&C&SAmerTrop,B.Hammel & J.Fraser 11096,,,
+INGADENS,INGA,DENS,LS001074,Inga,densiflora,Benth.,Fabaceae,,Nativa,A,0.577,Genus,Mex&C&SAmerTrop,Hammel 9847,,,
+INGAJINI,INGA,JINI,LS001075,Inga,jinicuil,Schltdl. & Cham ex G. Don,Fabaceae,Sin. Inga paterno Harms,Nativa,A,0.577,Genus,Mex&C&SAmerTrop,B.Hammel 11571,,,
+INGALEIO,INGA,LEIO,LS001076,Inga,leiocalycina,Benth.,Fabaceae,Hist. Tax. Inga coruscans,Nativa,A,0.56,Species,SAmerTrop,B.Hammel 12960,,,
+INGAMARG,INGA,MARG,LS001085,Inga,marginata,(Vell.) Mart.,Fabaceae,,Nativa,A,0.571,Species,LaSelva-MullerLand,Aguilar 7685,,,
+INGAMORT,INGA,MORT,LS001077,Inga,mortoniana,Jorge León,Fabaceae,Hist. Tax. Inga acrocephala,Nativa,A,0.577,Genus,Mex&C&SAmerTrop,Hammel 9694,,,
+INGAPAVO,INGA,PAVO,,,,,Fabaceae,**** need to figure out what this is/was; ?es sapindoides? tengo un apunte asi de 2008,,A,0.577,Genus,Mex&C&SAmerTrop,,,,**** need to figure out what this is/was; ?es sapindoides? tengo un apunte asi de 2008
+INGAPEZI,INGA,PEZI,LS001081,Inga,pezizifera,Benth.,Fabaceae,Sin. Inga riopalenquensis A. H. Gentry,Nativa,A,0.607,Species,SAmerTrop,Hammel 11033,,,
+INGAPUNC,INGA,PUNC,,Inga,punctata,Willd.,Fabaceae,"?? In the 1998 LS flora list - see specimen.  What is this now? (my memory is it was coruscans, leiocalycina)",,A,0.577,Genus,Mex&C&SAmerTrop,BEH 11596,,,1 stem
+INGASAPI,INGA,SAPI,LS002048,Inga,sapindoides,Willd.,Fabaceae,,Nativa,A,0.577,Genus,Mex&C&SAmerTrop,Aguilar 8074,,,
+INGASERT,INGA,SERT,LS001086,Inga,sertulifera,DC.,Fabaceae,Hist. Tax. Inga heterophylla,Nativa,A,0.65,Species,SAmerTrop,Hammel 10652,,,
+INGASP,INGA,SP,,Inga,,,Fabaceae,,,A,0.577,Genus,Mex&C&SAmerTrop,,,,
+INGATHIB,INGA,THIB,LS001088,Inga,thibaudiana,DC.,Fabaceae,,Nativa,A,0.577,Genus,Mex&C&SAmerTrop,Hammel 9711,,,
+INGAUMBE,INGA,UMBE,LS001090,Inga,umbellifera,(Vahl) Steud.,Fabaceae,,Nativa,A,0.724,Species,SAmerTrop,B.Hammel 10711,,,
+IRIADELT,IRIA,DELT,LS000316,Iriartea,deltoidea,Ruiz & Pav.,Arecaceae,Sin. Iriartea gigantea H. Wendl. Ex Burret,Nativa,P,0.25,Species,LaSelva-Rich,Aguilar 7697,,,
+JACACOPA,JACA,COPA,LS000845,Jacaranda,copaia,(Aubl.) D. Don,Bignoniaceae,,Nativa,A,0.38,Species,CostaRica-Malavass,B.Hammel 11447,"Elbert J. Little, Jr. and Gerardo Budowski 20245; Herb. Nac. CR",,
+JACADOLI,JACA,DOLI,LS000899,Jacaratia,dolichaula,(Donn. Sm.) Woodson,Caricaceae,,Nativa,A,0.265,Genus,SAmerTrop,Aguilar 7646,,,
+LACIAGGR,LACI,AGGR,LS001160,Lacistema,aggregatum,(Bergius) Rusby,Lacistemataceae,,Nativa,A,0.501,Species,LaSelva-MullerLand,Hammel 8012,G.S.Hartshorn 1402; Herb. Nac. CR,,"secundarios barely visible; strongly acum. tip; margin sharp teeth, only in the far 1/2."
+LACMPANA,LACM,PANA,LS000741,Lacmellea,panamensis,(Woodson) Markgr.,Apocynaceae,,Nativa,A,0.446,Species,LaSelva-MullerLand,O. Vargas  1327,B.Hammel & R.Robles 16717; Herb. Nac. CR,,
+LACUPANA,LACU,PANA,LS001591,Lacunaria,panamensis,(Standl.) Standl.,Ochnaceae,,Nativa,A,0.804,Genus,SAmerTrop,Hammel 8104,,,
+LADEHETE,LADE,HETE,LS001631,Ladenbergia,heterophylla,(Wedd.) Standl.,Rubiaceae,Sin. Ladenbergia sericophylla Standl.?,Nativa,A,0.49,Genus,SAmerTrop,Hammel 10970,,,
+LAETPROC,LAET,PROC,LS001161,Laetia,procera,(Poepp.) Eichler,Salicaceae,,Nativa,A,0.67,Species,LaSelva-King,G. Hartshorn 1049,B.Hammel&J.Trainer 12854; Herb. Nac. CR,,"leaf margin crenate (sm. rounded ""teeth"")"
+LECYAMPL,LECY,AMPL,LS001254,Lecythis,ampla,Miers,Lecythidaceae,,Nativa,A,0.68,Species,LaSelva-King,B. Hammel 12077,R. Robles 2208; Herb. Nac. CR,6,
+LIANSP,LIAN,SP,,,,,,,,L,,,,,,,
+LICA1029,LICA,1029,,Licaria,,,Lauraceae,,,A,0.805,Genus,Mex&SAmerTrop,,,,1 stem
+LICAARAC,LICA,ARAC,,Licania,arachicarpa,N. Zamora,Chrysobalanaceae,,Nativa,A,0.816,Genus,C&SAmerTrop,,,,"Clark1020 & Clark1024; id'd by JG/OV June13; NOTE - no LS number or voucher yet, not yet in a LS list"
+LICAMISA,LICA,MISA,LS002338,Licaria,misantlae,(Brandegee) Kosterm.,Lauraceae,"Hist. Tax. Licaria triandra, Licaria  sp. A de Flora Costarricensis y sp. nov. de listas anteriores",Nativa,A,0.805,Genus,Mex&SAmerTrop,B. Hammel 10670,J.F.Morales 1626-INBIO,,"Clark1037, id'd by JG/OV June13"
+LICASARA,LICA,SARA,LS001221,Licaria,sarapiquensis,Hammel,Lauraceae,"Sin. Licaria debilis Hammel, Hist. Tax. Licaria guatemalensis",Nativa,A,0.805,Genus,Mex&SAmerTrop,G. Hartshorn 1588,N.Zamora 2092-INBIO,,
+LICASP,LICA,SP,,Licaria,,,Lauraceae,MV#474; TO RECOLLECT (PER NZ),,A,0.805,Genus,Mex&SAmerTrop,,,,"MV: (NZ & BEH) either L. triandra, or a 3rd sp.;big lvs, undulate margins, dry spec. odorless"
+LICASP.A,LICA,SP.A,LS000913,Licania,sp. A,?,Chrysobalanaceae,Hist. Tax. Licania glabriflora,Nativa,A,0.816,Genus,C&SAmerTrop,Aguilar 7603,B. Hammel 11149; Herb. Nac. CR,,"very acute leaf base, acum. tip, petioles <1cm,6-8 pr sharply ascending secondaries"
+LONCHEPT,LONC,HEPT,LS001132,Lonchocarpus,heptaphyllus,(Poir.) DC.,Fabaceae,Sin. L. pentaphyllus (Poir.) Kunth ex DC.; L. latisiliquus M. Sousa,Nativa,A,0.716,Species,C&SAmerTrop,Hammel 10934,,,
+LONCOLIG,LONC,OLIG,LS001131,Lonchocarpus,oliganthus,F. J. Herm.,Fabaceae,,Nativa,A,0.707,Genus,Central America (tropical),Aguilar 8014,,,
+LOZAPITT,LOZA,PITT,LS001162,Lozania,pittieri,(S. F. Blake) L. B. Sm.,Lacistemataceae,Sin. Lozania pedicellata (Standl.) L. B. Sm.,Nativa,A,,,,Hammel 8260,Isidro Chacon 1248; Herb. Nac. CR,,"lf distinct acum. tip; margin completely toothed, teeth two sizes, sawlike; no Chave density"
+LUEHSEEM,LUEH,SEEM,LS001805,Luehea,seemannii,Triana & Planch.,Malvaceae,,Nativa,A,0.41664,Species,Central America (tropical),Hammel & Trainer 13016,,,
+MABEOCCI,MABE,OCCI,LS001034,Mabea,occidentalis,Bernh.,Euphorbiaceae,,Nativa,A,0.616,Genus,SAmerTrop,Hammel 8298,,,
+MACRCOST,MACR,COST,LS001053,Macrolobium,costaricense,W.C. Burger,Fabaceae,Hist. Tax. M. taylorii,Nativa,A,0.593,Genus,SAmerTrop,B.Hammel 9728,Orlando Vargas 327; Herb. Nac. CR,,checked: can have 2->5 prs. of lflets
+MAQUGUIA,MAQU,GUIA,LS001431,Maquira,guianensis,Aubl.,Moraceae,"Sin. Maquira costaricana (Standl.) C. C. Berg, Sin. Perebea costaricana Standl.",Nativa,A,0.766,Species,SAmerTrop,Hammel 11587,,,
+MARAPANA,MARA,PANA,LS000916,Maranthes,panamensis,(Standl.) Prance & F. White,Chrysobalanaceae,Sin. Couepia panamensis Satndl.,Nativa,A,0.817,Genus,AfrAustPNGSEAsiaTrop,Aguilar 8169,Barry Hammel 11260; Herb. Nac. CR; LS specimen,,"lvs very shiny below, sec.s highly contrasting, reddish; 2 sm round glands at leaf base on top."
+MARILAXI,MARI,LAXI,LS000936,Marila,laxiflora,Rusby,Calophyllaceae,Sin. Marila verapazensis Donn. Sm.,Nativa,A,,,,Hammel 11520,,,no wood density for genus in Chave compilation
+MARIPLUR,MARI,PLUR,LS000937,Marila,pluricostata,Standl. & L. O. Williams,Calophyllaceae,,Nativa,A,,,,Hammel & Trainer 10798,,,no wood density for genus in Chave compilation
+MELIDONN,MELI,DONN,LS001708,Meliosma,donnellsmithii,Urb.,Sabiaceae,,Nativa,A,0.41,Genus,SAmerTrop,Hammel 9108,,,
+MELIOCCI,MELI,OCCI,LS001709,Meliosma,occidentalis,Cuatr.,Sabiaceae,Hist. Tax. Meliosma vernicosa (Liebm.) Griseb.,Nativa,A,0.41,Genus,SAmerTrop,Hammel 9724,,,
+MICO623,MICO,623,,Miconia,,,Melastomataceae,???Miconia sp. - queda por determinar?; hojas verdes,,A,0.611,Genus,C&SAmerTrop,,,,MV
+MICOAFFI,MICO,AFFI,LS001343,Miconia,affinis,DC.,Melastomataceae,Sin. Miconia microcarpa DC.,Nativa,A,0.611,Genus,C&SAmerTrop,Aguilar 7768,,,
+MICOAPPE,MICO,APPE,LS001345,Miconia,appendiculata,Triana,Melastomataceae,,Nativa,A,0.611,Genus,C&SAmerTrop,Aguilar 7728,,,
+MICOCENT,MICO,CENT,LS001348,Miconia,centrodesma,Naudin,Melastomataceae,,Nativa,A,0.611,Genus,C&SAmerTrop,Aguilar 8106,,,
+MICOCOMM,MICO,COMM,LS001365,Miconia,commutata,Almeda,Melastomataceae,Hist. Tax. Miconia smaragdina,Nativa,A,0.611,Genus,C&SAmerTrop,Hammel 7940,,,
+MICODORS,MICO,DORS,LS001350,Miconia,dorsiloba,Gleason,Melastomataceae,,Nativa,A,0.611,Genus,C&SAmerTrop,B.Hammel 8077,,,
+MICOELAT,MICO,ELAT,LS001351,Miconia,elata,(Sw.) DC.,Melastomataceae,,Nativa,A,0.611,Genus,C&SAmerTrop,Aguilar 7717,,,
+MICOLIGU,MICO,LIGU,LS001357,Miconia,ligulata,Almeda,Melastomataceae,Sin. Leandra consimilis Gleason,Nativa,A,0.611,Genus,C&SAmerTrop,Aguilar 7730,,,
+MICOMULT,MICO,MULT,LS001359,Miconia,multispicata,Naudin,Melastomataceae,,Nativa,A,0.611,Genus,C&SAmerTrop,Aguilar 7710,,,
+MICONERV,MICO,NERV,LS001360,Miconia,nervosa,(Sm.) Triana,Melastomataceae,,Nativa,A,0.611,Genus,C&SAmerTrop,Aguilar 7574,,,
+MICOPUNC,MICO,PUNC,LS001362,Miconia,punctata,(Desr.) D. Don ex DC.,Melastomataceae,,Nativa,A,0.611,Genus,C&SAmerTrop,Aguilar 7706,,,
+MICOSIMP,MICO,SIMP,LS001364,Miconia,simplex,Triana,Melastomataceae,,Nativa,A,0.611,Genus,C&SAmerTrop,Aguilar 7605,,,Clark1137 id'd by JG/OV June13; 4 stems
+MICOSTEV,MICO,STEV,LS001367,Miconia,stevensiana,Almeda,Melastomataceae,,Nativa,A,0.611,Genus,C&SAmerTrop,Hammel 9777,,,
+MINQGUIA,MINQ,GUIA,LS001487,Minquartia,guianensis,Aubl.,Coulaceae,,Nativa,A,0.61,Species,CostaRica-Malavass,B.Hammel 10642,G. Herrera 2250; Herb. Nac. CR,5,
+MOURGLEA,MOUR,GLEA,LS001369,Mouriri,gleasoniana,Standl. ex Standl. & Steyerm.,Melastomataceae,,Nativa,A,0.836,Genus,South America (tropical),B.Hammel 9317,,,no wood density for genus in Chave compilation
+MUSSHYAC,MUSS,HYAC,LS000849,Mussatia,hyacinthina,(Standl.) Sandw.,Bignoniaceae,,Nativa,L,,,,,,,
+MYRCALIE,MYRC,ALIE,LS002427,Myrcia,aliena,McVaugh,Myrtaceae,,Nativa,A,0.801,Genus,SAmerTrop,Gentry 78581,,,"JG/OV say this is very interesting and want our specimen(s) for the herbarium; Clark1025,1048, and 1196 id'd by JG/OV June13"
+MYRCSPLE,MYRC,SPLE,LS001465,Myrcia,splendens,(Sw.) DC.,Myrtaceae,Sin. Myrcia costaricensis O. Berg,Nativa,A,0.8,Species,SAmerTrop,M.Grayum 2954,,,
+NAUCNAGA,NAUC,NAGA,LS001433,Naucleopsis,naga,Pittier,Moraceae,Sin. Ogcodeia naga (Pittier) Mildbr.,Nativa,A,0.651,Genus,SAmerTrop,Aguilar 7616,,,
+NECTCISS,NECT,CISS,LS001226,Nectandra,cissiflora,Nees,Lauraceae,Sin. Nectandra paulii C. K. Allen,Nativa,A,0.59,Species,SAmerExtratrop,Hammel 11168,,,
+NECTHYPO,NECT,HYPO,LS001227,Nectandra,hypoleuca,Hammel,Lauraceae,,Nativa,A,0.525,Genus,Mex&C&SAmerTrop,Hammel 9111,,,
+NECTPURP,NECT,PURP,LS002409,Nectandra,purpurea,(Ruiz & Pav. ) Mez,Lauraceae,Sin. Nectandra latifolia (Kunth) Mez,Nativa,A,0.4306768,Species,BCI-MullerLand,Jacobs  2540,,,MV#158; BEH id'd
+NECTSALI,NECT,SALI,,Nectandra,salicina,C. K. Allen,Lauraceae,"[INB, recolectada por los Clark]; MV#261&831; ID'D by NZ; Not on the LS list!!!!!",,A,0.525,Genus,Mex&C&SAmerTrop,,,,
+NEEAAMPL,NEEA,AMPL,LS001471,Neea,amplifolia,Donn. Sm.,Nyctaginaceae,,Nativa,A,0.63,Genus,Mex&SAmerTrop,Aguilar 7782,,,
+NEEAELEG,NEEA,ELEG,LS001473,Neea,elegans,P. H. Allen -vel aff.,Nyctaginaceae,,Nativa,A,0.63,Genus,Mex&SAmerTrop,Jacobs  2518,,,Clark943 id'd by JG/OV June13
+OCHRPYRA,OCHR,PYRA,LS000857,Ochroma,pyramidale,(Cav. ex Lam.) Urb.,Malvaceae,Sin. Ochroma lagopus (Cav. ex Lam.) Urb.,Nativa,A,0.19,Species,LaSelva-WiemWilli,Hammel 10669,,,
+OCOT965,OCOT,965,,Ocotea,,,Lauraceae,,,A,0.501,Genus,Mex&C&SAmerTrop,,,,1 stem
+OCOTATIR,OCOT,ATIR,LS001232,Ocotea,atirrensis,Mez & Donn. Sm. ex Mez,Lauraceae,,Nativa,A,0.48,Species,Central America (tropical),Hammel 8131,,,
+OCOTCERN,OCOT,CERN,LS001235,Ocotea,cernua,(Nees) Mez,Lauraceae,"Sin. Nectandra caudata (Nees) Mez, Sin. Nectandra killipii A.C.Sm.",Nativa,A,0.587,Species,LaSelva-MullerLandau,Aguilar 7667,,,
+OCOTDEND,OCOT,DEND,LS001236,Ocotea,dendrodaphne,Mez,Lauraceae,,Nativa,A,0.49,Species,La Selva (King),Aguilar 7936,,,Clark1147(small); id'd by JG/OV June13
+OCOTFLOR,OCOT,FLOR,LS001238,Ocotea,floribunda,(Sw.) Mez,Lauraceae,Sin. Ocotea wachenheimii Benoist,Nativa,A,0.395,Species,SAmerTrop,Hammel 9705,,,
+OCOTHART,OCOT,HART,LS001239,Ocotea,hartshorniana,Hammel,Lauraceae,,Nativa,A,0.38,Species,LaSelva-King,Aguilar 7661,,,"MV's 60,68; id'd by BEH"
+OCOTINSU,OCOT,INSU,LS001240,Ocotea,insularis,(Meisn.) Mez,Lauraceae,Sin. Ocotea ira Mez & Pittier ex Mez,Nativa,A,0.501,Genus,Mex&C&SAmerTrop,B. Hammel 10538,,,
+OCOTLAET,OCOT,LAET,LS001242,Ocotea,laetevirens,Standl.& Steyerm.,Lauraceae,Hist. Tax. Ocotea meziana C. K. Allen,Nativa,A,0.39,Species,LaSelva-King,J. González 7768,,,
+OCOTLEUC,OCOT,LEUC,LS001241,Ocotea,leucoxylon,(Sw.) Laness.,Lauraceae,Sin. Ocotea lenticellata Lundell,Nativa,A,0.462,Species,SAmerTrop,M. Grayum 2388,O. Vargas 241 - INBIO,,
+OCOTMACR,OCOT,MACR,LS001244,Ocotea,macropoda,(Kunth) Mez,Lauraceae,Sin. Ocotea babosa C. K. Allen,Nativa,A,0.501,Genus,Mex&C&SAmerTrop,Hammel & Trainer 10871,,,MV#302; NZ says to get this fertile (he called it babosa in 2003)
+OCOTMOLL,OCOT,MOLL,LS001243,Ocotea,mollifolia,Mez & Pittier ex Mez,Lauraceae,,Nativa,A,0.501,Genus,Mex&C&SAmerTrop,Hammel 10684,,,
+OCOTPENT,OCOT,PENT,LS001245,Ocotea,pentagona,Mez,Lauraceae,Hist. Tax. Ocotea nicaraguensis,Nativa,A,0.501,Genus,Mex&C&SAmerTrop,J. González 7548,,,MV#705; id'd by BEH (as nicaraguensis)
+OCOTSP,OCOT,SP,,Ocotea,,,Lauraceae,"MV#'s:760,763,258; NZ called it O. babosa??, and said to get, hopefully fertile",,A,0.501,Genus,Mex&C&SAmerTrop,,,,"MV#'s:760,763,258; NZ called it O. babosa??, and said to get, hopefully fertile"
+OCOTSP.1,OCOT,SP.1,LS001233,Ocotea,sp. 1,?,Lauraceae,"Hist. Tax. O. bijuga -vel sp. aff., Hist. Tax. Ocotea sp. A",Nativa,A,0.501,Genus,Mex&C&SAmerTrop,Hammel 10229,,,"Clark1005 and others id'd by JG/OV June13; JG said the Manual of CR has this species as ""sp.1"""
+ORMOINTE,ORMO,INTE,LS001137,Ormosia,intermedia,N.Zamora,Fabaceae,,Nativa,A,0.621,Genus,SAmerTrop,O. Vargas  576,,,
+ORMOOCHR,ORMO,OCHR,,Ormosia,,,Fabaceae,? Intermedia? Velutina?,,A,0.621,Genus,SAmerTrop,,,,7 stems
+ORMOVELU,ORMO,VELU,LS001139,Ormosia,velutina,Rudd,Fabaceae,,Nativa,A,0.621,Genus,SAmerTrop,Aguilar 7930,,,
+OSSAMACR,OSSA,MACR,LS001373,Ossaea,macrophylla,(Benth.) Cogn.,Melastomataceae,,Nativa,A,,,,Hammel 8619,,,
+OTOBNOVO,OTOB,NOVO,LS001442,Otoba,novogranatensis,Moldenke,Myristicaceae,Sin. Dialyanthera otoba (Humb. & Bonpl.) Warb.,Nativa,A,0.35,Species,SAmerTrop,Hammel 13170,,,
+PACHAQUA,PACH,AQUA,LS000858,Pachira,aquatica,Aubl.,Malvaceae,,Nativa,A,0.377,Species,SAmerTrop,Folsom 9479,Miguel Ballestero 2; Herb. Nac. CR (La Virgen),,
+PALIBEAC,PALI,BEAC,,Palicourea,beachiana,C.M. Taylor,Rubiaceae,,Nativa,A,0.547,Genus,SAmerTrop,,,,"Clark1140, id'd by JG/OV June13 (not yet in LS list)"
+PALICALI,PALI,CALI,,Palicourea,calidicola,(C.M. Taylor) C.M. Taylor,Rubiaceae,,Nativa,A,0.547,Genus,SAmerTrop,,,,"Clark1225, id'd by JG/OV June13 (not yet in LS list)"
+PARAANTI,PARA,ANTI,,,,,,??? Genero?,,A,,,,,,,??? Can't match with any prior list - need to find out what this is/was
+PARATRIC,PARA,TRIC,LS001460,Parathesis,trichogyne,Hemsl.,Primulaceae,"Sin. Parathesis chrysophylla Lundell, Sin. Parathesis longipetiolata Lundell, Sin. Parathesis pallida Lundell",Nativa,A,0.62,Genus,SAmerTrop,Hammel 10939,,,
+PAULFIBR,PAUL,FIBR,LS001719,Paullinia,fibrigera,Radlk.,Sapindaceae,,Nativa,L,,,,Hammel & Trainer 13252,,,no wood density for genus in Chave compilation
+PAULGRAN,PAUL,GRAN,LS001721,Paullinia,granatensis,(Planch. & Linden) Radlk,Sapindaceae,Sin. Paullinia paullinioides Radlk.,Nativa,L,,,,Aguilar 7908,,,no wood density for genus in Chave compilation
+PAULINGI,PAUL,INGI,LS001722,Paullinia,ingifolia,Rich. ex Juss,Sapindaceae,"Sin. Paullinia grandifolia, Hist.Tax. P. pseudostipitata",Nativa,L,,,,Hammel 10676,,,no wood density for genus in Chave compilation
+PENTMACR,PENT,MACR,LS001097,Pentaclethra,macroloba,(Willd.) Kuntze,Fabaceae,,Nativa,A,0.49,Species,LaSelva-KingMullerLandauWiemWilli,Aguilar 7850,,10,
+PENTMONO,PENT,MONO,LS001640,Pentagonia,monocaulis,C. M. Taylor,Rubiaceae,Hist. Tax. Pentagonia donnell-smithii,Nativa,A,,,,Aguilar 7755,,,no wood density for genus in Chave compilation
+PEREHISP,PERE,HISP,LS001434,Perebea,hispidula,Standl.,Moraceae,Hist. Tax. Perebea angustifolia,Nativa,A,0.488,Genus,SAmerTrop,Aguilar 7648,,,
+PEREMEXI,PERE,MEXI,,,,,,1 stem; ??? Can't match with any prior list - need to find out what this is/was,,A,,,,,,,1 stem; ??? Can't match with any prior list - need to find out what this is/was
+PERSAMER,PERS,AMER,LS001248,Persea,americana,Mill,Lauraceae,MV#310: from the beg of CC!; id'd by NZ; also L6121 numcol 992 verified by L/W checking the specimen,Nativa de CR Plantada en LS,A,0.456,Genus,C&SAmerTrop,Solano 1144,,,MV; long petioles (unlike rigens/silvatica)
+PERSSILV,PERS,SILV,LS001249,Persea,silvatica,Van der Werff,Lauraceae,Hist. Tax. Persea rigens,Nativa,A,0.456,Genus,C&SAmerTrop,Hammel 9453,J.F.Morales 4323-INBIO,,
+PHOLPULC,PHOL,PULC,LS000317,Pholidostachys,pulchra,H. Wendl. ex Hemsl.,Arecaceae,,Nativa,P,,,,O. Vargas  735,,,no wood density for genus in Chave compilation
+PINZCORI,PINZ,CORI,LS000987,Pinzona,coriacea,Mart. & Zucc.,Dilleniaceae,Sin. Doliocarpus coriaceus (Mart. & Zucc.) Gilg,Nativa,L,,,,Aguilar 7885,,,no wood density for genus in Chave compilation
+PIPEARBO,PIPE,ARBO,LS001540,Piper,arboreum,Aubl.,Piperaceae,,Nativa,A,0.33,Genus,South America (tropical),Grayum 2025,,,
+PIPEAURI,PIPE,AURI,LS002431,Piper,auritifolium,Trel.,Piperaceae,Hist. Tax. “Forest biggie”,Nativa,A,0.33,Genus,South America (tropical),Hammel 8183,,,
+PIPECENO,PIPE,CENO,LS001545,Piper,cenocladum,C. DC.,Piperaceae,,Nativa,A,0.33,Genus,South America (tropical),Greig 544,,,
+PIPECOLO,PIPE,COLO,LS001546,Piper,colonense,C. DC.,Piperaceae,Sin. Piper culebranum C. DC.,Nativa,A,0.33,Genus,South America (tropical),Grayum 2867,,,
+PIPEDECU,PIPE,DECU,LS002432,Piper,decurrens,C. DC.,Piperaceae,Sin. Piper tenuimucronatum C. DC.?,Nativa,A,0.33,Genus,South America (tropical),Hammel 8023,,,Clark1182 id'd by JG/OV June13
+PIPEMELA,PIPE,MELA,LS001559,Piper,melanocladum,C. DC.,Piperaceae,,Nativa,A,0.33,Genus,South America (tropical),Hammel 8073,,,
+PIPESP,PIPE,SP,,Piper,,,Piperaceae,MV 510,,A,0.33,Genus,South America (tropical),,,,MV; 1 stem
+PLEULIND,PLEU,LIND,LS001163,Pleuranthodendron,lindenii,(Turcz.) Sleumer,Salicaceae,Sin. Pleuranthodendron mexicana (A. Gray) L. O. Williams,Nativa,A,0.68,Species,Mexico,Aguilar 7617,M.H.Grayum/John Sperry 1866; Herb. Nac. CR; LS spec.,,"long petioles, glands at top of petiole, big teeth; 5 main veins; used to be called Hasseltia in LS"
+POSOGRFL,POSO,GRFL,LS001643,Posoqueria,grandiflora,Standl.,Rubiaceae,Hist. Tax. Posoqueria maxima,Nativa,A,0.524,Genus,C&SAmerTrop,O. Vargas 1769,,,
+POSOGRFR,POSO,GRFR,,Posoqueria,grandifructa,Hammel & C.M. Taylor,Rubiaceae,,Nativa,A,0.524,Genus,C&SAmerTrop,,,,Clark1134 id'd by JG/OV June13; not yet in LS list; 9 stems
+POSOPANA,POSO,PANA,LS001641,Posoqueria,panamensis,(Walp. & Duchass.) Walp.,Rubiaceae,Hist. Tax. Posoqueria coriacea,Nativa,A,0.541,Species,LaSelva-MullerLandau-used old name latifolia,O. Vargas  586,,,
+POURBICO,POUR,BICO,LS000906,Pourouma,bicolor,Mart.,Urticaceae,Sin. Pourouma aspera Trécul,Nativa,A,0.329,Species,LaSelva-KingMullerLandau,Aguilar 7839,,,
+POURMINO,POUR,MINO,LS000907,Pourouma,minor,Benoist,Urticaceae,Sin. Pourouma umbellifera W. C. Burger,Nativa,A,0.41,Species,CostaRica-Malavass,M. Grayum 2894,,,
+POUT1004,POUT,1004,,Pouteria,,,Sapotaceae,,,A,0.783,Genus,Mex&C&SAmerTrop,,,,1 stem
+POUT1015,POUT,1015,,Pouteria,,,Sapotaceae,,,A,0.783,Genus,Mex&C&SAmerTrop,,,,2 stems
+POUT1019,POUT,1019,,Pouteria,,,Sapotaceae,,,A,0.783,Genus,Mex&C&SAmerTrop,,,,1 stem
+POUT1023,POUT,1023,,Pouteria,,,Sapotaceae,,,A,0.783,Genus,Mex&C&SAmerTrop,,,,1 stem
+POUT1026,POUT,1026,,Pouteria,,,Sapotaceae,,,A,0.783,Genus,Mex&C&SAmerTrop,,,,2 stems
+POUT1034,POUT,1034,,Pouteria,,,Sapotaceae,,,A,0.783,Genus,Mex&C&SAmerTrop,,,,1 stem
+POUT1041,POUT,1041,,Pouteria,,,Sapotaceae,,,A,0.783,Genus,Mex&C&SAmerTrop,,,,1 stem
+POUT1045,POUT,1045,,Pouteria,,,Sapotaceae,,,A,0.783,Genus,Mex&C&SAmerTrop,,,,1 stem
+POUT1062,POUT,1062,,Pouteria,,,Sapotaceae,,,A,0.783,Genus,Mex&C&SAmerTrop,,,,1 stem
+POUT1068,POUT,1068,,Pouteria,,,Sapotaceae,,,A,0.783,Genus,Mex&C&SAmerTrop,,,,1 stem
+POUT1071,POUT,1071,,Pouteria,,,Sapotaceae,,,A,0.783,Genus,Mex&C&SAmerTrop,,,,1 stem
+POUT1072,POUT,1072,,Pouteria,,,Sapotaceae,,,A,0.783,Genus,Mex&C&SAmerTrop,,,,1 stem
+POUT1081,POUT,1081,,Pouteria,,,Sapotaceae,,,A,0.783,Genus,Mex&C&SAmerTrop,,,,1 stem
+POUT1082,POUT,1082,,Pouteria,,,Sapotaceae,,,A,0.783,Genus,Mex&C&SAmerTrop,,,,1 stem
+POUT981,POUT,981,,Pouteria,,,Sapotaceae,,,A,0.783,Genus,Mex&C&SAmerTrop,,,,1 stem
+POUTCALI,POUT,CALI,LS001738,Pouteria,calistophylla,(Standl.) Baehni,Sapotaceae,Hist. Tax. Pouteria standleyana,Nativa,A,0.783,Genus,Mex&C&SAmerTrop,B. Hammel 10933,Alex. Rodriguez 437-INBIO,,1 stem
+POUTCAMP,POUT,CAMP,LS001739,Pouteria,campechiana,(Kunth) Baehni,Sapotaceae,our MV#255; we had it as congestifolia; the one in the LS herb. is probably mis-id'd,Nativa,A,0.79,Species,Mexico,B. Hammel 9991,,,our MV#255; we had it as congestifolia; the one in the LS herb. is probably mis-id'd
+POUTDURL,POUT,DURL,LS001741,Pouteria,durlandii,(Standl.) Baehni,Sapotaceae,Hist. Tax. Pouteria sp. 1,Nativa,A,0.783,Genus,Mex&C&SAmerTrop,G. Hartshorn 1621,,,MV Pouteria sp. 1; was our unilocularis;to collect with fruits
+POUTFILI,POUT,FILI,LS002473,Pouteria,filipes,Eyma,Sapotaceae,,Nativa,A,0.964,Species,South America (tropical),O. Vargas 1326,,,
+POUTRETI,POUT,RETI,LS001743,Pouteria,reticulata,(Engl.) Eyma,Sapotaceae,Sin. Pouteria unilocularis (Donn. Sm.) Baehni,Nativa,A,0.794,Species,C&SAmerTrop,B. Hammel 9047,,,"MV #S:334,414,667,815;NZ"
+POUTSILV,POUT,SILV,LS001744,Pouteria,silvestris,T. D. Penn.,Sapotaceae,,Nativa,A,0.783,Genus,Mex&C&SAmerTrop,G. Hartshorn 1430,,,
+POUTSP,POUT,SP,,Pouteria,,,Sapotaceae,,,A,0.783,Genus,Mex&C&SAmerTrop,,,,
+POUTSP2,POUT,SP2,LS002470,Pouteria,reticulata  cf.,?,Sapotaceae,Hist. Tax.  Pouteria sp. 2 (Clark),Nativa,A,0.783,Genus,Mex&C&SAmerTrop,Clark Indiv. #881,,,"MV#'s:280,298,542; to collect fertile; NZ said it always comes in as sterile material"
+POUTSP3,POUT,SP3,,Pouteria,,,Sapotaceae,MV#: 232; to collect fertile,,A,0.783,Genus,Mex&C&SAmerTrop,,,,MV#: 232; to collect fertile
+POUTSP4,POUT,SP4,,Pouteria,,,Sapotaceae,P. durlandii?? (NZ); to collect fertile,,A,0.783,Genus,Mex&C&SAmerTrop,,,,MV (but no specimen no.s given)
+POUTSP5,POUT,SP5,,Pouteria,,,Sapotaceae,"P. reticulata? or another Pouteria? (NZ);MV#363; NZ says to collect, hopefully fertile",,A,0.783,Genus,Mex&C&SAmerTrop,,,,"P. reticulata? or another Pouteria? (NZ);MV#363; NZ says to collect, hopefully fertile"
+POUTTORT,POUT,TORT,LS001745,Pouteria,torta,(Mart.) Radlk.,Sapotaceae,Sin. Pouteria neglecta Cronq.,Nativa,A,0.769,Species,SAmerTrop,Hartshorn  1111,,,
+PRADLIND,PRAD,LIND,,,,,,??? Can't match with any prior list - need to find out what this is/was,,A,,,,,,,2 stems
+PRESDECU,PRES,DECU,LS000318,Prestoea,decurrens,(H. Wendl. ex Burret) H. E. Moore,Arecaceae,,Nativa,P,0.25,Species,La Selva - Rich,O. Vargas  728,,,
+PRESPITT,PRES,PITT,LS000894,Preslianthus,pittieri,(Standl.) Iltis & Cornejo,Capparaceae,Sin. Capparis pittieri Standl,Nativa,A,0.684,Genus,Mex&SAmerTrop,Aguilar 7780,M.H.Grayum 2090; Herb. Nac. CR,,"striking olive gr. color, fleshy leaf, very short petiole"
+PROTCONF,PROT,CONF,LS000882,Protium,confusum,(Rose) Pittier,Burseraceae,Hist. Tax. Protium costaricense,Nativa,A,0.566,Genus,Mex&C&SAmerTrop,Hammel 8157,B.Hammel 8157 - Herb. Nac. CR; LS specimen,,"can have >7 lflets, small leaflets, small tree, can lack stilt roots; leaflets not toothed"
+PROTGLAB,PROT,GLAB,LS002361,Protium,glabrum,(Rose) Engl.,Burseraceae,???P. ravenii now? Need to confirm.,Nativa,A,0.566,Genus,Mex&C&SAmerTrop,Aguilar 7609- now ravenii?,G.S.Hartshorn 1774 - Herb. Nac. CR; LS specimen - now ravenii?,,"often simple lvs., lflets very rounded; ELONGATE FR; tree leaks white liquid when scraped."
+PROTPANA,PROT,PANA,LS000883,Protium,panamense,(Rose) I.M. Johnst.,Burseraceae,,Nativa,A,0.433,Species,LaSelva-MullerLandau,B. Hammel 11108,B. Jacobs 2148 - Herb. Nac. CR; LS specimen,,"lf base acute, visible tertiaries, yellow mid-vein below; margin often toothed; pulvini; stilt roots usual"
+PROTPITT,PROT,PITT,LS000884,Protium,pittieri,(Rose) Engl.,Burseraceae,Sin. Tetragastris tomentosa D. M. Porter,Nativa,A,0.475,Species,LaSelva-MullerLandau,Aguilar 7610,James Folsom 10078 - Herb.Nac. CR; LS specimen,,"stout petiolules, woody raquis; fine visible tertiaries; main vein below pinkish; nearly flat leaf base"
+PROTRAVE,PROT,RAVE,LS002324,Protium,ravenii,D.M. Porter,Burseraceae,Hist. Tax. Protium  glabrum  - ??? Just some of them?,Nativa,A,0.566,Genus,Mex&C&SAmerTrop,O. Vargas 1309,,,
+PSEUSPUR,PSEU,SPUR,LS001435,Pseudolmedia,spuria,(Sw.) Griseb.,Moraceae,,Nativa,A,0.75,Species,Guatemala,Aguilar 8339,,,
+PSYC1103,PSYC,1103,,Psychotria,,,Rubiaceae,,,A,0.563,Genus,Mex&SAmerTrop,,,,1 stem
+PSYC1169,PSYC,1169,,Psychotria,,,Rubiaceae,,,A,0.563,Genus,Mex&SAmerTrop,,,,3 stems
+PSYCBUCH,PSYC,BUCH,LS001672,Psychotria,buchtienii,Standl.,Rubiaceae,Hist. Tax. Psychotria officinalis - ?? Best guess on species - verify in field in 2013,Nativa,A,0.563,Genus,Mex&SAmerTrop,G. Hartshorn 1521,,,
+PSYCCALI,PSYC,CALI,LS001659,Psychotria,calidicola,C. M. Taylor,Rubiaceae,Hist. Tax. Psychotria eurycarpa,Nativa,A,0.563,Genus,Mex&SAmerTrop,Aguilar 7598,,,
+PSYCELAT,PSYC,ELAT,LS001656,Psychotria,elata,(Sw.) Hammel,Rubiaceae,Sin. Cephaelis elata Sw.,Nativa,A,0.563,Genus,Mex&SAmerTrop,Hammel 8187,,,
+PSYCLUXU,PSYC,LUXU,LS001668,Psychotria,luxurians,Rusby,Rubiaceae,,Nativa,A,0.563,Genus,Mex&SAmerTrop,Hammel 8295,,,
+PSYCPANA,PSYC,PANA,LS001674,Psychotria,panamensis,Standl.,Rubiaceae,Sin. Psychotria grandistipula Merr.,Nativa,A,0.563,Genus,Mex&SAmerTrop,Aguilar 8209,,,
+PSYCSP,PSYC,SP,,Psychotria,,,Rubiaceae,,,A,0.563,Genus,Mex&SAmerTrop,,,,
+PSYCSUER,PSYC,SUER,LS001682,Psychotria,suerrensis,Donn. Sm.,Rubiaceae,,Native,A,0.563,Genus,Mex&SAmerTrop,Aguilar 7607,,,Clark1178 id'd by JG/OV June13
+PTERHAYE,PTER,HAYE,LS001142,Pterocarpus,hayesii,Hemsl.,Fabaceae,Hist. Tax Pterocarpus rohrii  - ??? CARBONO? - delete if none in 2013 census,Nativa,A,0.471,Genus,C&SAmerTrop,Aguilar 8069,,,
+PTEROFFI,PTER,OFFI,LS001143,Pterocarpus,officinalis,Jacq.,Fabaceae,,Nativa,A,0.419,Species,LaSelva-MullerLandau,B. Hammel 12842,,,MV
+PTERSP.A,PTER,SP.A,LS001144,Pterocarpus,sp. A,?,Fabaceae,"Hist. Tax P. hayesii, P. rohrii  - all need to be verified in field in 2013 (paleta?)",Nativa,A,0.383,Species,LaSelva-MullerLandau,Hammel 8822,,,
+QUARBRAC,QUAR,BRAC,LS000860,Quararibea,bracteolosa,(Ducke) K. Schum.,Malvaceae,Sin. Matisia bracteolosa Ducke,Nativa,A,0.492,Genus,C&SAmerTrop,Aguilar 7943,GS Hartshorn 1504; Herb. Nac. CR,,only Quar covered with pubescence and with big hiatus to second set of secondaries
+QUAROCHR,QUAR,OCHR,LS000862,Quararibea,ochrocalyx,(K. Schum.) Vischer,Malvaceae,Sin. Matisia ochrocalyx K. Schum.,Nativa,A,0.492,Genus,C&SAmerTrop,Aguilar 8219,Damon Smith 521; Herb. Nac. CR,,"not pubesc.;medium-big lvs, no hiatus to second pr of secondaries"
+QUARPARV,QUAR,PARV,LS000863,Quararibea,parvifolia,Standl.,Malvaceae,,Nativa,A,0.492,Genus,C&SAmerTrop,Hammel 8603,G.S. Hartshorn 1440; Herb. Nac. CR; Magsasay spec.,,"MV; quite small leaves, pointy; only ca. 4 prs of secondaries, evenly spaced"
+QUARPUMI,QUAR,PUMI,LS000864,Quararibea,pumila,W. S. Alverson,Malvaceae,,Nativa,A,0.492,Genus,C&SAmerTrop,Aguilar 7721,,,
+QUIIMACR,QUII,MACR,LS001592,Quiina,macrophylla,Tul.,Ochnaceae,Sin. Quina schippii Standl.,Nativa,A,0.862,Genus,SAmerTrop,Grayum 2879,,,
+RANDMIRA,RAND,MIRA,LS001687,Randia,mira,Dwyer,Rubiaceae,,Nativa,A,0.75,Genus,Mexico&SAmerTrop,O. Vargas  1361,,,Clark1203 id'd by JG/OV June13; was in data originally as RAND MICR
+RAUVPURP,RAUV,PURP,LS000754,Rauvolfia,purpurascens,Standl.,Apocynaceae,,Nativa,A,0.476,Species,LaSelva-MullerLandau,Aguilar 7887,M.Grayum 1283 - Herb.Nac. CR; LS specimen,,"whorled leaves, sap"
+RHODKUNT,RHOD,KUNT,LS001250,Rhodostemonodaphne,kunthiana,(Nees) Rohwer,Lauraceae,"Sin. Nectandra kunthiana (Nees) Kosterm., Sin. Ocotea cooperi C. K. Allen",Nativa,A,0.395,Genus,SAmerTrop,Aguilar 7588,,,MV#478
+RICHDRES,RICH,OBOV,LS001044,Richeria,dressleri,G.L. Webster,Phyllanthaceae,Hist. Tax. Richeria obovata,Nativa,A,0.577,Genus,SAmerTrop,Aguilar 8116,,,
+RINODEFL,RINO,DEFL,LS001851,Rinorea,deflexiflora,Bartlett,Violaceae,,Nativa,A,0.596,Species,LaSelva-King&MullerLandau,Hammel 10721,,,
+ROURSUER,ROUR,SUER,LS000948,Rourea,suerrensis,Donn. Sm.,Connaraceae,,Nativa,L,,,,Hammel 9499,,,"Clark1221, id'd by JG/OV June13; to go to LS herbarium (fertile, rare); 1 stem"
+RYANSPEC,RYAN,SPEC,LS001164,Ryania,speciosa,Vahl,Salicaceae,,Nativa,A,,,,G. Hartshorn 1161,B.Jacobs & D.Smith 2567 - Herb. Nac. CR; LS specimen,,lf nearly sessile; finely crenate; many parallel secondaries; about size of Minq lf
+SACOTRIC,SACO,TRIC,LS001206,Sacoglottis,trichogyna,Cuatrec.,Humiriaceae,,Nativa,A,0.805,Genus,SAmerTrop,Aguilar 8091,,,
+SAPIGLAN,SAPI,GLAN,LS001046,Sapium,glandulosum,(L.) Morong,Euphorbiaceae,"Sin. Sapium aucuparium Jacq., Sapium jamaicense Sw., Sapium oligoneurum K. Schum. & Pittier",Nativa,A,0.415,Species,SAmerTrop,Hammel 10947,,,MV; note from MV - we need to resolve the id of both of our collected Sapium spp.
+SAPILAUR,SAPI,LAUR,LS001047,Sapium,laurifolium,(A. Rich.) Griseb.,Euphorbiaceae,"Sin. Sapium pleiostachys K. Schum. & Pittier, Hist. Tax. Sapium aucuparium",Nativa,A,0.419,Genus,Mex&C&SAmerTrop,B. Hammel 11082,,,MV; note from MV - we need to resolve the id of both of our collected Sapium spp.
+SAPOSP,SAPO,SP,,,,,Sapotaceae,,,,,,,,,,"MV584; in 2003 file listed as gen code ""DIPH"""
+SAPRVIRI,SAPR,VIRI,LS000726,Sapranthus,viridiflorus,G. E. Schatz,Annonaceae,,Nativa,A,0.63,Genus,CostaRica-Malavass,Aguilar 8000,,,
+SIMAAMAR,SIMA,AMAR,LS001761,Simarouba,amara,Aubl.,Simaroubaceae,,Nativa,A,0.423,Species,CostaRica-Malavass&WiemWilli,O. Vargas  679,,2,
+SIMPSP,SIMP,SP,,,,,,???? - what genus?? - check in field in 2013,,,,,,,,,1 stem
+SIPACUSP,SIPA,CUSP,LS001402,Siparuna,cuspidata,(Tul.) A. DC.,Siparunaceae,Hist. Tax. Siparuna guianensis,Nativa,A,0.655,Species,SAmerTrop,Hartshorn 2249,,,
+SIPAGRAN,SIPA,GRAN,LS001403,Siparuna,grandiflora,(Kunth) Perkins,Siparunaceae,Sin. Siparuna tonduziana Perkins,Nativa,A,0.656,Genus,SAmerTrop,Hammel 8070,,,
+SIPAPAUC,SIPA,PAUC,LS001404,Siparuna,pauciflora,(Beurl.) A. DC.,Siparunaceae,,Nativa,A,0.656,Genus,SAmerTrop,Aguilar 7924,,,
+SIPATHEC,SIPA,THEC,LS001405,Siparuna,thecaphora,(Poepp. & Endl.) A. DC.,Siparunaceae,"Sin. Siparuna andina Tul., Sin. Siparuna macra Standl., Sin. Siparuna nicaraguensis Hemsl.",Nativa,A,0.656,Genus,SAmerTrop,Hammel 8196,,,
+SLOAGENI,SLOA,GENI,LS000989,Sloanea,geniculata,Dam. A. Sm.,Elaeocarpaceae,Hist. Tax. Sloanea faginea Standl.,Nativa,A,0.8,Genus,Mex&SAmerTrop,Aguilar 8016,G.S.Hartshorn 1290-Herb.Nac. CR; LS specimen,,"teeth, prominent parallel tertiaries, huge bracts at twig end"
+SLOAGUIA,SLOA,GUIA,LS000990,Sloanea,guianensis,(Aubl.) Benth.,Elaeocarpaceae,Hist. Tax. Sloanea meianthera Donn. Sm.,Nativa,A,0.821,Species,SAmerTrop,B. Hammel 12921,,,
+SLOALAEV,SLOA,LAEV,LS000991,Sloanea,laevigata,Dam. A. Sm.,Elaeocarpaceae,Hist. Tax. Sloanea latifolia (Rich.) K. Schum.,Nativa,A,0.8,Genus,Mex&SAmerTrop,Hammel 11654,,,
+SLOAMEDU,SLOA,MEDU,LS000992,Sloanea,medusula,K. Schum. & Pittier,Elaeocarpaceae,,Nativa,A,0.8,Genus,Mex&SAmerTrop,Aguilar 8199,"L.J. Poveda, L.R.Holdridge, & G.S.Hartshorn s.n.-Herb.Nac.CR; LS specimen",,"huge leaf with teeth at vein ends, pubescent, huge stipules - look like small leaves"
+SLOARUGO,SLOA,RUGO,LS000993,Sloanea,rugosa,Dam. A. Sm.,Elaeocarpaceae,,Nativa,A,0.8,Genus,Mex&SAmerTrop,D. Smith 1224,,,MV
+SOCREXOR,SOCR,EXOR,LS000321,Socratea,exorrhiza,(Mart.) H. Wendl.,Arecaceae,Sin. Socratea durissima (Oerst.) H. Wendl.,Nativa,P,0.23,Species,LaSelva-Rich,Aguilar 7719,,,
+SOLACIRC,SOLA,CIRC,LS001779,Solanum,circinatum,Bohs,Solanaceae,Sin. Cyphomandra hartwegii (Miers) Dunal,Nativa,A,0.28,Genus,SAmerTrop,Aguilar 7679,,,
+SOLAROVI,SOLA,ROVI,LS001783,Solanum,rovirosanum,Donn. Sm.,Solanaceae,,Nativa,A,0.28,Genus,SAmerTrop,J. González 6958,,,Clark1130 id'd by JG/OV June13
+SOROPUBI,SORO,PUBI,LS001436,Sorocea,pubivena,Hemsl.,Moraceae,,Nativa,A,0.578,Genus,SAmerTrop,Aguilar 7611,,,
+SPACCORR,SPAC,CORR,LS001282,Spachea,correae,Cuatrec. & Croat,Malpighiaceae,,Nativa,A,0.595,Genus,SAmerTrop,O. Vargas  1306,,,
+SPONRADL,SPON,RADL,LS000710,Spondias,radlkoferi,Donn. Sm.,Anacardiaceae,,Nativa,A,0.31,Species,LaSelva-MullerLandau,Hammel 10497,Ulises Chavarria 1000; Herb. Nac. CR,,MV
+STERRECO,STER,RECO,LS001795,Sterculia,recordiana,Standl.,Malvaceae,Hist. Tax. Sterculia costaricana,Nativa,A,0.43,Species,CostaRica-Malavass,Hammel 8425,,,
+STRYMICR,STRY,MICR,LS001098,Stryphnodendron,microstachyum,Poepp. & Endl,Fabaceae,Sin. Stryphnodendron excelsum Harms,Nativa,A,0.47,Species,LaSelva-MullerLandau,Hammel 10498,,,
+SWARNICA,SWAR,NICA,LS001145,Swartzia,nicaraguensis,(Britton & P. Wilson) Standl.,Fabaceae,Hist. Tax. Swartzia cubensis,Nativa,A,0.835,Genus,Mex&SAmerTrop,Hartshorn 1510,,,
+SWAROCHN,SWAR,OCHN,LS001146,Swartzia,ochnacea,DC.,Fabaceae,Hist. Tax. Swartzia simplex,Nativa,A,0.835,Genus,Mex&SAmerTrop,D. Solano 1154,,,
+SYMPGLOB,SYMP,GLOB,LS000938,Symphonia,globulifera,L. f.,Clusiaceae,,Nativa,A,0.56,Species,CostaRica-Malavass,Aguilar 7649,,,
+SYMPSTRI,SYMP,STRI,LS001800,Symplocos,striata,Kriebel & N. Zamora,Symplocaceae,"Hist. Tax. S. panamensis, S. austin-smithii",Nativa,A,0.49,Genus,SAmerTrop,"Hartshorn 1599, Hammel 9255",,,
+SYNEWARS,SYNE,WARS,LS000323,Synechanthus,warscewiczianus,H. Wendl.,Arecaceae,,Nativa,P,,,,Aguilar 8270,,,no wood density; Clark1131 id'd by JG/OV June13
+TABEARBO,TABE,ARBO,LS000748,Tabernaemontana,arborea,Rose,Apocynaceae,Sin. Peschiera arborea (Rose) Markgr.,Nativa,A,0.469,Genus,SAmerTrop,Hammel 11543,"Isidro Chacon 541 - Herb. Nac. CR; LS spec., SOR840",,
+TABEDONN,TABE,DONN,LS000756,Tabernaemontana,donnell-smithii,Rose,Apocynaceae,Sin. Stemmadenia donnell-smithii (Rose) Woodson,Nativa,A,0.469,Genus,SAmerTrop,Aguilar 7787,Tim McDowell 946; Herb. Nac. CR (prob. LS spec.),,MV
+TACHCOST,TACH,COST,LS001058,Tachigali,costaricensis,(N. Zamora & Poveda) N. Zamora & van der Werff,Fabaceae,Sin. Sclerolobium costaricense N. Zamora & Poveda,Nativa,A,0.525,Genus,SAmerTrop,B. Hammel 10106,,,
+TAPIGUIA,TAPI,GUIA,LS002277,Tapirira,guianensis,Aubl.,Anacardiaceae,"Sin. Tapirira myriantha Triana & Planch., Hist. Tax. Trichilia moritzii",Nativa,A,0.457,Species,SAmerTrop,O. Vargas  1268,BEH 11085-Herb.Nac.CR; LS specimen,,
+TERMAMAZ,TERM,AMAZ,LS000944,Terminalia,amazonia,(J. F. Gmel.) Exell,Combretaceae,,Nativa,A,0.68,Species,CostaRica-Malavass,Aguilar 8292,E.Chaves S. 181-Herb.Nac. CR,,"med-sm lvs., tips rounded to pointy, lvs all wider past middle; lf almost sessile; tiny golden fruits"
+TERMBUCI,TERM,BUCI,LS000945,Terminalia,bucidoides,Standl. & L. 0. Williams,Combretaceae,,Nativa,A,0.678,Genus,C&SAmerTrop,Hartshorn 1769,G.S. Hartshorn 1769; Herb. Nac. CR,,"MV; lvs. obovate ca. leathery, lopsided tip,  very long petioles, fruits silver-tan, 2-4 cm wide, central ridge"
+TERMOBLO,TERM,OBLO,LS000946,Terminalia,oblonga,(Ruiz & Pav.) Steud.,Combretaceae,Sin. Terminalia lucida Pittier,Nativa,A,0.675,Species,CAmerTrop,Aguilar 7632,G.S.Hartshorn 1827; Herb. Nac. CR,,"MV; petiole 1.5-2 cm, lf obovate, fr.s golden, bigger than bucidoides"
+TETREURY,TETR,EURY,LS001048,Tetrorchidium,euryphyllum,Standl.,Euphorbiaceae,,Nativa,A,0.47,Genus,Mexico,Hammel 11251,,,
+TETRPANA,TETR,PANA,LS000885,Tetragastris,panamensis,(Engler) 0. Ktze.,Burseraceae,,Nativa,A,0.717,Genus,C&SAmerTrop,Hammel 11108,B.Hammel & G. de Nevers 15334 - Herb. Nac. CR; LS specimen,,"looks like Protium panamense, but lflets ca. sessile, and >7 lflets.  Lfllet bases very asymmetric."
+TETRROBL,TETR,ROBL,LS001049,Tetrorchidium,robledoanum,Cuatrec.,Euphorbiaceae,Sin. Tetrorchidium gorgonae Croizat,Nativa,A,0.47,Genus,Mexico,Hammel 8000,,,Clark1235 id'd by JG/OV June13
+TETRSP,TETR,SP,,,,,,1 stem; Tetrorchidium? Tetragastris? Something else?,,A,,,,,,,1 stem; Tetrorchidium? Tetragastris? Something else?
+THEOMAMM,THEO,MAMM,LS001797,Theobroma,mammosum,Cuatrec. & Jorge León,Malvaceae,,Nativa,A,0.574,Genus,SAmerTrop,O. Vargas  1308,,,
+THEOSIMI,THEO,SIMI,LS001798,Theobroma,simiarum,Donn. Sm.,Malvaceae,,Nativa,A,0.574,Genus,SAmerTrop,Aguilar 7883,,,
+TREMINTE,TREM,INTE,LS001813,Trema,integerrima,(Beurl.) Standl.,Cannabaceae,,Nativa,A,0.3,Species,SAmerTrop,Grayum 2877,,,MV
+TRICSEPT,TRIC,SEPT,LS001392,Trichilia,septentrionalis,C. DC.,Meliaceae,"Sin. Trichilia moritzii C. DC., Sin. Trichilia polyneura C. DC.",Nativa,A,0.65,Genus,Mex&C&SAmerTrop,Hammel & Trainer 10807,,,
+TROPINVO,TROP,INVO,LS001438,Trophis,involucrata,W. C. Burger,Moraceae,,Nativa,A,0.586,Genus,Mex&C&SAmerTrop,Aguilar 7618,,,
+UNONHAMM,UNON,HAMM,LS000727,Unonopsis,hammelii,G. E. Schatz & Maas,Annonaceae,,Nativa,A,0.54,Genus,C&SAmerTrop,Hammel 9423,,,
+UNONPITT,UNON,PITT,LS000728,Unonopsis,pittieri,Saff.,Annonaceae,Sin. Unonopsis schippii R. E. Fr.,Nativa,A,0.368,Species,LaSelva-MullerLandau,Hammel 10592,G.E.Schatz 994 - Herb. Nac. CR,,
+UNONSP.A,UNON,SP.A,LS002384,Unonopsis,sp. A,?,Annonaceae,"Unonopsis -sp. 3  [recolectada por los Clark]; a 3rd species, NZ thinks undescribed",Nativa,A,0.54,Genus,C&SAmerTrop,,,,MV
+VIROKOSC,VIRO,KOSC,LS001443,Virola,koschnyi,Warb.,Myristicaceae,,Nativa,A,0.426,Species,LaSelva-MullerLandau,Aguilar 7600,,,
+VIROSEBI,VIRO,SEBI,LS001444,Virola,sebifera,Aubl.,Myristicaceae,,Nativa,A,0.416,Species,LaSelva-King&MullerLandau,Hammel 10623,,,
+VISMMACR,VISM,MACR,LS000942,Vismia,macrophylla,Kunth,Hypericaceae,,Nativa,A,0.494,Species,SAmerTrop,B.Hammel 9830,,,
+VITECOOP,VITE,COOP,LS001848,Vitex,cooperi,Standl.,Lamiaceae,,Nativa,A,0.553,Genus,SAmerTrop,Aguilar 7940,,,
+VOCHFERR,VOCH,FERR,LS001861,Vochysia,ferruginea,Mart.,Vochysiaceae,,Nativa,A,0.37,Species,CostaRica-Malavass,Hammel 9226,,,
+VOCHGUAT,VOCH,GUAT,LS001862,Vochysia,guatemalensis,Donn. Sm.,Vochysiaceae,Sin. Vochysia hondurensis Sprague,Nativa,A,0.333,Species,CAmerTrop,,,,MV
+VOUAANOM,VOUA,ANOM,LS001734,Vouarana,anomala,(Steyerm.) Acev.-Rodr,Sapindaceae,,Nativa,A,0.84,Genus,SAmerTrop,B.Hammel 11109,,,
+VOUASP,VOUA,SP,,Vouarana,,,Sapindaceae,,,A,0.84,Genus,SAmerTrop,,,,1 stem
+WARSCOCC,WARS,COCC,LS001699,Warszewiczia,coccinea,(Vahl) Klotzsch,Rubiaceae,,Nativa,A,0.553,Species,LaSelva-MullerLandau,Hammel 8819,,,
+WELFREGI,WELF,REGI,LS000324,Welfia,regia,H. Wendl. ex André,Arecaceae,Sin. W. georgii H. Wendl. ex Burret,Nativa,P,0.4,Species,LaSelva-Rich,T. Croat 44237,,,
+XYLOBOCA,XYLO,BOCA,LS000730,Xylopia,bocatorena,Schery,Annonaceae,,Nativa,A,0.581,Genus,C&SAmerTrop,Aguilar 7615,M.H.Grayum&P.Sleeper6492 - Herb.Nac.CR,,lacks visible secondary veins;fleshy
+XYLOSERI,XYLO,SERI,LS000731,Xylopia,sericophylla,Standl. & L. 0. Williams,Annonaceae,,Nativa,A,0.54,Species,CostaRica-Malavass,B.Hammel 8629,B.Hammel&J.Trainer12764 -Herb.Nac. CR; LS specimen,,
+ZYGI627,ZYGI,627,,,,,Fabaceae,"MV (""Pithecellobium"") - Cojoba?",,A,0.723,Genus,SAmerTrop,,,,"MV (""Pithecellobium#627)"
+ZYGIGIGA,ZYGI,GIGA,LS001099,Zygia,gigantifoliola,(Schery) L. Rico,Fabaceae,Sin. Pithecellobium gigantifoliolum (Schery) Jorge León,Nativa,A,0.723,Genus,SAmerTrop,Aguilar 7866,,,
