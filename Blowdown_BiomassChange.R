@@ -1,4 +1,4 @@
-##### Read in lidar data #####
+##### Read in canopy height data (from lidar) #####
 
   # 5 m resolution canopy height rasters from 2009 and 2019
     lidarCHM09 <- raster::raster("CHM09_AOI_res500.tif")
@@ -49,7 +49,7 @@
   raster::plot(CHM09Forest, breaks=htBrks, col=pal(length(htBrks)))
   raster::plot(CHM19Forest, breaks=htBrks, col=pal(length(htBrks)))
 
-##### Make aboveground biomass (AGB) rasters with MC uncertainty #####
+##### Calculate aboveground biomass (AGB) across study area with MC uncertainty #####
 
   # Make an empty raster with correct resolution for AGB model (half hectare)
     AGB_template <- raster::raster(ext=raster::extent(ForestPoly), resolution=(5000^0.5), crs=sp::proj4string(ForestPoly))
@@ -57,6 +57,11 @@
   # Resample CHM rasters to lower AGB model resolution
     CHM09_low <- raster::resample(x=CHM09Forest, y=AGB_template, method="bilinear")
     CHM19_low <- raster::resample(x=CHM19Forest, y=AGB_template, method="bilinear")
+    
+    # Re-crop to extent of study area
+    CHM09_low <- raster::crop(CHM09_low, raster::extent(lidarCHM09))
+    CHM19_low <- raster::crop(CHM19_low, raster::extent(lidarCHM19))
+
   
   # Predict AGB values using Monte Carlo simulation to get uncertainty
     
@@ -174,85 +179,145 @@
       AGB19 <- CHM19_low
       AGB19@data@values[!is.na(AGB19@data@values)] <- 0.47*(8.881)*CHM19_low@data@values[!is.na(CHM19_low@data@values)]^(1.021)
                                                         
-      AGBchange <- AGB09
-      AGBchange@data@values <- (AGB19@data@values-AGB09@data@values)
+    # Make raster of change in AGB  
+      deltaAGB <- AGB19-AGB09
       
+    # Plot (used in Figure S1 B)  
         pal <- colorRampPalette(c("red4","red3","red","tomato","white","lightblue","blue"))
         agbBrks <- seq(-60,20,5)
-        raster::plot(AGBchange, breaks=agbBrks, col=pal(length(agbBrks)),colNA="yellow")
-        
-        raster::writeRaster(AGBchange,'Output/AGBchange.tif',options=c('TFW=YES'))
-
+        raster::plot(deltaAGB, breaks=agbBrks, col=pal(length(agbBrks)),colNA="yellow")
     
-##### Make plot of delta NPV versus delta AGB for 2009-2019 #####
-  
-  # Make raster of change in AGB  
-    deltaAGB <- AGB19-AGB09
-    
-  # Scale to proportion of biomass lost
+    # Scale to proportion of biomass lost
     deltaAGBProp <- deltaAGB
     deltaAGBProp@data@values <- (deltaAGB@data@values)/AGB09@data@values*100
     
+    # Range of values
+    range(deltaAGBProp@data@values, na.rm=T)
+    
+##### Make plot of delta NPV versus delta AGB for 2009-2019 #####
+
   # Load delta NPV data
     deltaNPV <- raster::raster(rgdal::readGDAL("SMA_Delta_NPV.tif"))
     deltaNPV_resampled <- raster::resample(x=deltaNPV, y=deltaAGB , method="bilinear")
     deltaNPV_forest <- raster::mask(deltaNPV_resampled, ForestPoly)
+  
+  # Mean, SD, min, and max delta NPV    
+    mean(deltaNPV_forest@data@values[!is.na(deltaAGB@data@values)],na.rm=T)
+    sd(deltaNPV_forest@data@values[!is.na(deltaAGB@data@values)],na.rm=T)
+    min(deltaNPV_forest@data@values[!is.na(deltaAGB@data@values)],na.rm=T)
+    max(deltaNPV_forest@data@values[!is.na(deltaAGB@data@values)],na.rm=T)
+  
+  # Is delta NPV significantly greater than 0?  
+    t.test(deltaNPV_forest@data@values[!is.na(deltaAGB@data@values)], alternative = "greater")
+  
+  # Is there a significant relationship between AGB loss and delta NPV?  
+    summary(lm(deltaAGB@data@values[!is.na(deltaAGB@data@values)]~deltaNPV_forest@data@values[!is.na(deltaAGB@data@values)]))  
+  
+  # Plot (Figure S9)  
+    par(mfrow=c(2,1),mar=c(3,4,0,1),oma=c(2,2,2,0))  
+    plot(x=deltaNPV_forest@data@values[!is.na(deltaAGBProp@data@values)],
+         y=deltaAGBProp@data@values[!is.na(deltaAGBProp@data@values)],
+         xlab=NA,ylab=NA,
+         pch=20, cex.axis=1)
+    abline(h=0, lwd=2, col="grey")
+    abline(v=0, lwd=2, col="grey")
+    points(x=deltaNPV_forest@data@values[!is.na(deltaAGB@data@values)],
+            y=deltaAGBProp@data@values[!is.na(deltaAGBProp@data@values)],
+            pch=20)
+    text("A", x=-0.055, y=60)
+    mtext(expression(ACD~change~"(%)"),side=2,line=3, cex=1)
+  
+  
+    plot(x=deltaNPV_forest@data@values[!is.na(deltaAGB@data@values)],
+         y=deltaAGB@data@values[!is.na(deltaAGB@data@values)],
+         xlab=NA,ylab=NA,
+         pch=20, cex.axis=1)
+    abline(h=0, lwd=2, col="grey")
+    abline(v=0, lwd=2, col="grey")
+    points(x=deltaNPV_forest@data@values[!is.na(deltaAGB@data@values)],
+            y=deltaAGB@data@values[!is.na(deltaAGB@data@values)],
+            pch=20)
+    text("B", x=-0.055, y=40)
+    mtext(expression(Delta~NPV~fraction),side=1,line=3, cex=1)
+    mtext(expression(Delta~ACD~"(Mg C"~ha^{-1}~")"),side=2,line=3, cex=1)
     
-  mean(deltaNPV_forest@data@values[!is.na(deltaAGB@data@values)],na.rm=T)
-  sd(deltaNPV_forest@data@values[!is.na(deltaAGB@data@values)],na.rm=T)
-  min(deltaNPV_forest@data@values[!is.na(deltaAGB@data@values)],na.rm=T)
-  max(deltaNPV_forest@data@values[!is.na(deltaAGB@data@values)],na.rm=T)
-  
-  summary(lm(deltaAGB@data@values[!is.na(deltaAGB@data@values)]~deltaNPV_forest@data@values[!is.na(deltaAGB@data@values)]))  
-  
-  par(mfrow=c(2,1),mar=c(3,4,0,1),oma=c(2,2,2,0))  
-  plot(x=deltaNPV_forest@data@values[!is.na(deltaAGBProp@data@values)],
-       y=deltaAGBProp@data@values[!is.na(deltaAGBProp@data@values)],
-       xlab=NA,ylab=NA,
-       pch=20, cex.axis=1)
-  abline(h=0, lwd=2, col="grey")
-  abline(v=0, lwd=2, col="grey")
-  points(x=deltaNPV_forest@data@values[!is.na(deltaAGB@data@values)],
-          y=deltaAGBProp@data@values[!is.na(deltaAGBProp@data@values)],
-          pch=20)
-  text("A", x=-0.055, y=60)
-  mtext(expression(ACD~change~"(%)"),side=2,line=3, cex=1)
 
+##### AGBD loss on vs. off trails #####
+      
+      # Read in trail file
+      trails <- rgdal::readOGR("LaSelvaTrails.kml")
+      trails <- sp::spTransform(trails, sp::proj4string(deltaAGB))
+      
+      # Divide pixels based on trail intersection or not
+      trailPix <- raster::mask(deltaAGB,trails)
+      noTrailPix <- raster::mask(deltaAGB,trails, inverse = T)
+      
+      # Get trail vs. no trail pixel values (total ACD lost)
+      trailVals <- trailPix@data@values[!is.na(trailPix@data@values)]
+      noTrailVals <- noTrailPix@data@values[!is.na(noTrailPix@data@values)]
+      
+      # Not significanly different by t-test or K-S test
+      t.test(trailVals, noTrailVals)
+      ks.test(trailVals, noTrailVals)
 
-  plot(x=deltaNPV_forest@data@values[!is.na(deltaAGB@data@values)],
-       y=deltaAGB@data@values[!is.na(deltaAGB@data@values)],
-       xlab=NA,ylab=NA,
-       pch=20, cex.axis=1)
-  abline(h=0, lwd=2, col="grey")
-  abline(v=0, lwd=2, col="grey")
-  points(x=deltaNPV_forest@data@values[!is.na(deltaAGB@data@values)],
-          y=deltaAGB@data@values[!is.na(deltaAGB@data@values)],
-          pch=20)
-  text("B", x=-0.055, y=40)
-  mtext(expression(Delta~NPV~fraction),side=1,line=3, cex=1)
-  mtext(expression(Delta~ACD~"(Mg C"~ha^{-1}~")"),side=2,line=3, cex=1)
+      
+      # Make plot of distributions (Figure S3)
+        trailPixDens <- density(trailVals)
+        noTrailPixDens <- density(noTrailVals)
+      
+        par(mfrow=c(1,1), mar=c(3,3,1,1), oma=c(1,2,0,0), las=1)
+        
+        plot(noTrailPixDens, main=NA, lwd=2,
+             ylim=range(c(trailPixDens$y,noTrailPixDens$y))+c(0,0.008))
+        lines(trailPixDens, lty=2, lwd=2)
+        abline(v=mean(trailVals),col="red",lwd=2,lty=2)
+        abline(v=mean(noTrailVals),col="red",lwd=2,lty=1)
   
+        legend(x="topleft",y=NULL,
+               c("Off trail (n = 151 pixels)",
+                 "On trail (n = 92 pixels)"),
+               lwd=2,lty=c(1,2),
+               bty="n", cex = 0.8)
+        mtext(expression(Delta~ACD~"(Mg C"~ha^{-1}~")"), side=1, outer=F, line=3)
+        mtext("Frequency", side=2, outer=F, las=0, line=3.5)
+      
+##### AGBD loss vs. pre-blowdown ACD #####
+        
+      htData <- data.frame(AGB09 = AGB09@data@values,
+                           deltaAGB = deltaAGB@data@values,
+                           deltaAGBProp = deltaAGBProp@data@values)
+        
+      # Is there a significant relationship wth absolute ACD loss?  
+        hta <- lm(deltaAGB~AGB09, data = htData)
+        summary(hta)
+        
+      # Is there a significant relationship wth proportional ACD loss? 
+        htb <- lm(deltaAGBProp~AGB09, data = htData)
+        summary(htb)
+      
+      # Plot relationships (Figure S4)
+        
+        par(mfrow=c(2,1), mar=c(3,3,1,1), oma=c(1,2,0,0), las=1)
+        
+        plot(deltaAGB~AGB09, data = htData,
+             pch=20,
+             xlab= NA,ylab=NA)
+        abline(hta)
+        text("A", x=50,y=16)
+        mtext(expression(Delta~ACD~"(Mg C"~ha^{-1}~")"),side=2,line=2.5, cex=1, las=0)
+        
+        plot(deltaAGBProp~AGB09, data = htData,
+             pch=20,
+             xlab= NA,ylab=NA)
+        abline(htb)
+        text("B", x=50,y=20)
   
-  summary(lm(deltaAGBProp@data@values[!is.na(deltaAGBProp@data@values)]~deltaNPV_forest@data@values[!is.na(deltaAGBProp@data@values)]))  
-  
+        mtext(expression(Delta~ACD~"(%)"),side=2,line=2.5, cex=1, las=0)
+        mtext(expression("2009"~ACD~"(Mg C"~ha^{-1}~")"),side=1,line=2.5, cex=1, las=0)
 
-##### Plot changes in AGB 2009-2019 ##### 
-  usedOG <- sp::spTransform(usedOG, sp::proj4string(lidarCHM19))
-  usedSF <- sp::spTransform(usedSF, sp::proj4string(lidarCHM19))
-  
-  usedAll <- rgeos::gUnion(usedOG,usedSF)
-  
-  pal <- colorRampPalette(c("red","orange","yellow","white","blue"))
-  htBrks <- seq(-200,80,10)
-  
-  raster::plot(deltaAGB,ext=raster::extent(usedSF), lab.breaks=seq(-200,100,50), col=pal(length(htBrks)),
-               axes=F,box=F)
-  raster::plot(usedOG,add=T, lwd=3)
-  raster::plot(usedSF, add=T, lwd=3,  lty=2)
-  
 ##### Calculate annual AGBD change in CARBONO plots 1997 - 2017 #####
   # Get Wood production data per plot
-    Wood <- read.csv("Wood.csv")
+    Wood <- read.csv("PlotData/Wood.csv")
     
   # Make a plot variable
     Wood$plot <- substr(Wood$plot_treeid,start=1,stop=2)
@@ -271,8 +336,8 @@
     E.LaSelva <- -0.06340053
     
   # Merge with other datasets to assign wood density to each stem
-    TreeIDs <- read.csv("TreeIDs.csv") #Tree species from ID for each stem
-    Species <- read.csv("Species.csv") #Wood density from species
+    TreeIDs <- read.csv("PlotData/TreeIDs.csv") #Tree species from ID for each stem
+    Species <- read.csv("PlotData/Species.csv") #Wood density from species
     
     Wood <- merge(x=Wood, y=TreeIDs[,c("plot_treeid","genspcode")])
     Wood <- merge(x=Wood, y=Species[,c("genspcode","family","wooddens")], all.x=T)
@@ -292,7 +357,7 @@
   # Calculate AGB (convert diameter to cm)
     Wood$AGB <- agb.allometry(E.LaSelva, Wood$wooddens, Wood$dia_calc/10)
     
-  # REMOVE one tree with error in DBH record?
+  # REMOVE one tree with apparent error in DBH record?
     Wood <- Wood[!(Wood$plot_treeid=="L3268"),]
     
     plotIDs <- unique(Wood$plot)
@@ -319,141 +384,58 @@
     
     pctAvgAnnualRecent <- 100*((mean(carbonoAGBD[carbonoAGBD$Year==2016,"AGBD"])/mean(carbonoAGBD[carbonoAGBD$Year==2009,"AGBD"]))^(1/(2016-2009))-1)
 
-    # Find time of regrowth
+    # Estimate time of regrowth
     
-    # Original estimate
-    regrowthTime <- (mean(AGBresults$allForest09) - mean(AGBresults$allForest19))/avgAnnualChange
+      # Original estimate
+      regrowthTime <- (mean(AGBresults$allForest09) - mean(AGBresults$allForest19))/avgAnnualChange
     
-    # AGBD loss including recent growth
-    highLoss <- (mean(AGBresults$allForest09) + avgAnnualRecent*(2018-2009) - mean(AGBresults$allForest19))/mean(AGBresults$allForest09)*100
-    
-    # Regrowth estimate including recent growth
-    regrowthTimeb <- (mean(AGBresults$allForest09) + avgAnnualRecent*(2018-2009) - mean(AGBresults$allForest19))/avgAnnualChange
-    
-    # Find limits by using maximum and minimum plot-level change
-    changeAGBD <- data.frame(Plot = rep(plotIDs,each = length(years)-1),
-                             Year1 = rep(years[1:length(years)-1],length(plotIDs)),
-                             Year2 = rep(years[2:length(years)],length(plotIDs)),
-                             dAGBD = NA)
-    
-    for(i in 1:length(plotIDs)){
-      for(j in 1:length(years)-1){
-        changeAGBD[changeAGBD$Plot==plotIDs[i] & changeAGBD$Year1 == years[j],"dAGBD"] <- 
-          carbonoAGBD[carbonoAGBD$Plot==plotIDs[i] & carbonoAGBD$Year == years[j]+1, "AGBD"]-carbonoAGBD[carbonoAGBD$Plot==plotIDs[i] & carbonoAGBD$Year == years[j], "AGBD"]
+    # Estimate time of regrowth including estimated increases between 2009 and 2018 (upper limit)
+      
+      # AGBD loss including recent growth
+      highLoss <- (mean(AGBresults$allForest09) + avgAnnualRecent*(2018-2009) - mean(AGBresults$allForest19))/mean(AGBresults$allForest09)*100
+      
+      # Regrowth estimate including recent growth
+      regrowthTimeb <- (mean(AGBresults$allForest09) + avgAnnualRecent*(2018-2009) - mean(AGBresults$allForest19))/avgAnnualChange
+      
+    # Estimate time of regrowth including faster growth immediately following disturbance (upper limit)
+  
+      
+      # Find largest AGBD change in individual plots
+        changeAGBD <- data.frame(Plot = rep(plotIDs,each = length(years)-1),
+                                 Year1 = rep(years[1:length(years)-1],length(plotIDs)),
+                                 Year2 = rep(years[2:length(years)],length(plotIDs)),
+                                 dAGBD = NA)
+        
+        for(i in 1:length(plotIDs)){
+          for(j in 1:length(years)-1){
+            changeAGBD[changeAGBD$Plot==plotIDs[i] & changeAGBD$Year1 == years[j],"dAGBD"] <- 
+              carbonoAGBD[carbonoAGBD$Plot==plotIDs[i] & carbonoAGBD$Year == years[j]+1, "AGBD"]-carbonoAGBD[carbonoAGBD$Plot==plotIDs[i] & carbonoAGBD$Year == years[j], "AGBD"]
+            }
         }
-    }
-    
-    # Extreme change occurences
-    
-    changeAGBD[which(changeAGBD$dAGBD < -25*0.47),]
-    
-    recoveryEst <- data.frame(yr = 0:9,
-                              dAGBD = NA)
-    for(i in 1:10){
-      recoveryEst$dAGBD[i] <- mean(changeAGBD[which(changeAGBD$dAGBD < -25*0.47)+recoveryEst$yr[i],"dAGBD"])
-    }
-
-    par(mar=c(4,4,1,1),oma=c(0,0,0,0))
-    plot(dAGBD~yr, data = recoveryEst,
-         pch=20,
-         xlab = NA,
-         ylab = NA)
-    mtext(expression(Time~after~disturbance~"(yr)"),side=1,line=2.5, cex=1)
-    mtext(expression(Delta~ACD~"(Mg C"~ha^{-1}~yr^{-1}~")"),side=2,line=2.5, cex=1)
-    abline(h=0,col="black", lwd=2)
-    abline(h=avgAnnualChange, lty=2, lwd=2, col="red")
-    
-    regrowthTime2 <- (mean(AGBresults$allForest09) - mean(AGBresults$allForest19) - sum(recoveryEst$dAGBD[2:6]))/avgAnnualChange + 6
       
-      # Including recent growth
-    regrowthTime2b <- (mean(AGBresults$allForest09) + avgAnnualRecent*(2018-2009) - mean(AGBresults$allForest19) - sum(recoveryEst$dAGBD[2:6]))/avgAnnualChange + 6
-
-##### Revision: look at AGBD loss on trails, and in higher vs. lower forests #####
-      
-      # Must run sections "Make raster plot of mean biomass loss data" and 
-      # "Make plot of delta NPV versus delta AGB for 2009-2019" first
-      
-      # Read in trail file
-      trails <- rgdal::readOGR("Figure S1 info/trailsV3_utm16N.kml")
-      trails <- sp::spTransform(trails, sp::proj4string(deltaAGB))
-      
-      # Divide pixels based on trail intersection or not
-      trailPix <- raster::mask(deltaAGB,trails)
-      noTrailPix <- raster::mask(deltaAGB,trails, inverse = T)
-      
-      trailPixProp <- raster::mask(deltaAGBProp,trails)
-      noTrailPixProp <- raster::mask(deltaAGBProp,trails, inverse = T)
-      
-      # Get trail vs. no trail pixel values (Proportion ACD lost)
-      trailVals <- trailPix@data@values[!is.na(trailPix@data@values)]
-      noTrailVals <- noTrailPix@data@values[!is.na(noTrailPix@data@values)]
-      
-      trailValsProp <- trailPixProp@data@values[!is.na(trailPixProp@data@values)]
-      noTrailValsProp <- noTrailPixProp@data@values[!is.na(noTrailPixProp@data@values)]
-      
-      # Not significanly different by t-test or K-S test
-      t.test(trailVals, noTrailVals)
-      ks.test(trailVals, noTrailVals)
-
-      trailPixDens <- density(trailVals)
-      noTrailPixDens <- density(noTrailVals)
-      
-      pdf("FigureS6_TrailEffects.PDF", width=5, height=4)
-        par(mfrow=c(1,1), mar=c(3,3,1,1), oma=c(1,2,0,0), las=1)
+        changeAGBD[which(changeAGBD$dAGBD < -25*0.47),]
         
-        plot(noTrailPixDens, main=NA, lwd=2,
-             ylim=range(c(trailPixDens$y,noTrailPixDens$y))+c(0,0.008))
-        lines(trailPixDens, lty=2, lwd=2)
-        abline(v=mean(trailVals),col="red",lwd=2,lty=2)
-        abline(v=mean(noTrailVals),col="red",lwd=2,lty=1)
-  
-        legend(x="topleft",y=NULL,
-               c("Off trail (n = 151 pixels)",
-                 "On trail (n = 92 pixels)"),
-               lwd=2,lty=c(1,2),
-               bty="n", cex = 0.8)
-        mtext(expression(Delta~ACD~"(Mg C"~ha^{-1}~")"), side=1, outer=F, line=3)
-        mtext("Frequency", side=2, outer=F, las=0, line=3.5)
-      dev.off()
-      
-      
-      htData <- data.frame(AGB09 = AGB09@data@values,
-                           deltaAGB = deltaAGB@data@values,
-                           deltaAGBProp = deltaAGBProp@data@values)
-      hta <- lm(deltaAGB~AGB09, data = htData)
-      htb <- lm(deltaAGBProp~AGB09, data = htData)
-      
-      newx <- seq(min(AGB09@data@values,na.rm=T),
-                  max(AGB09@data@values,na.rm=T),length.out = 100)
-      
-      conf_a <- predict(hta, newdata = data.frame(AGB09=newx), interval="confidence",
-                        level = 0.95)
-      conf_b <- predict(htb, newdata = data.frame(AGB09=newx),interval="confidence",
-                        level = 0.95)
+        # Calculate faster growth in those extreme events
+        recoveryEst <- data.frame(yr = 0:9,
+                                  dAGBD = NA)
+        for(i in 1:10){
+          recoveryEst$dAGBD[i] <- mean(changeAGBD[which(changeAGBD$dAGBD < -25*0.47)+recoveryEst$yr[i],"dAGBD"])
+        }
 
-      
-      pdf("FigureS7_OringinalForestHeightEffects.PDF", width=5, height=7)
-        par(mfrow=c(2,1), mar=c(3,3,1,1), oma=c(1,2,0,0), las=1)
-        
-        plot(deltaAGB~AGB09, data = htData,
+        # Plot (Figure S8)
+        par(mar=c(4,4,1,1),oma=c(0,0,0,0))
+        plot(dAGBD~yr, data = recoveryEst,
              pch=20,
-             xlab= NA,ylab=NA)
-        abline(hta)
-        text("A", x=50,y=16)
-        mtext(expression(Delta~ACD~"(Mg C"~ha^{-1}~")"),side=2,line=2.5, cex=1, las=0)
+             xlab = NA,
+             ylab = NA)
+        mtext(expression(Time~after~disturbance~"(yr)"),side=1,line=2.5, cex=1)
+        mtext(expression(Delta~ACD~"(Mg C"~ha^{-1}~yr^{-1}~")"),side=2,line=2.5, cex=1)
+        abline(h=0,col="black", lwd=2)
+        abline(h=avgAnnualChange, lty=2, lwd=2, col="red")
+    
+        regrowthTime2 <- (mean(AGBresults$allForest09) - mean(AGBresults$allForest19) - sum(recoveryEst$dAGBD[2:6]))/avgAnnualChange + 6
+        # Add + 6 to account for the first 6 years that are included in sum(recoveryEst$dAGBD[2:6])
         
-        plot(deltaAGBProp~AGB09, data = htData,
-             pch=20,
-             xlab= NA,ylab=NA)
-        abline(htb)
-        text("B", x=50,y=20)
-  
-        mtext(expression(Delta~ACD~"(%)"),side=2,line=2.5, cex=1, las=0)
-        mtext(expression("2009"~ACD~"(Mg C"~ha^{-1}~")"),side=1,line=2.5, cex=1, las=0)
-      dev.off()
-
- 
-
-
-
-      
+      # Including estimated increases between 2009 and 2018 and faster growth immediately following disturbance
+        regrowthTime2b <- (mean(AGBresults$allForest09) + avgAnnualRecent*(2018-2009) - mean(AGBresults$allForest19) - sum(recoveryEst$dAGBD[2:6]))/avgAnnualChange + 6
+        # Add + 6 to account for the first 6 years that are included in sum(recoveryEst$dAGBD[2:6])
