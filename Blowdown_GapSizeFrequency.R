@@ -1,8 +1,4 @@
-# library(caTools)
-# library(popbio)
-# library(VGAM)
-
-#### Define new funtions ####
+#### Define new funtions used below ####
 
 # Make binary gap raster
   makeGapRaster <- function(CHMraster, gapHeight=2){
@@ -103,22 +99,24 @@
     
 #### Read in data ####
 
- setwd("~/Desktop/Chapter3/LaSelvaBlowdown") # KC desktop
+  # 1.25 m resolution canopy height rasters from 2009 and 2019
+    lidarCHM09 <- raster::raster("CHM09_AOI_res125.tif")
+    lidarCHM19 <- raster::raster("CHM19_AOI_res125.tif")
 
-  load("CHMs_AOI_res125.RData")
+    # Assign negative values to 0  
+      lidarCHM09@data@values[lidarCHM09@data@values < 0 & !is.na(lidarCHM09@data@values)] <- 0
+      lidarCHM19@data@values[lidarCHM19@data@values < 0 & !is.na(lidarCHM19@data@values)] <- 0
 
-  CHM09mask@data@values[CHM09mask@data@values < 0 & !is.na(CHM09mask@data@values)] <- 0
-  CHM19mask@data@values[CHM19mask@data@values < 0 & !is.na(CHM19mask@data@values)] <- 0
-
-    LaSelvaClass <- rgdal::readOGR("LU2000.shp")
-    # All forested area
-    LaSelvaClass <- rgdal::readOGR("LU2000.shp")
-    ForestClasses <- c("Old-growth Forests","Ecological Reserve","Forested Swamps","Secondary Forests","Abandoned Agroforestry","Abandoned Plantation", "Selectively-logged Forests")
-    ForestPoly <- LaSelvaClass[LaSelvaClass$DESCRIPTIO %in% ForestClasses,]
-    # Remove forest area added in or after 1996
-     ForestPoly <- ForestPoly[!(ForestPoly$YEAR >= 1996),]
-    # Remove tiny fragment of abandoned plantation
-    ForestPoly <- ForestPoly[!(ForestPoly$LU00_UTM0_==68),]
+    # Make forest type polygons
+      LaSelvaClass <- rgdal::readOGR("LandUseShapefile/LU2000.shp")
+      # All forested area
+      LaSelvaClass <- rgdal::readOGR("LU2000.shp")
+      ForestClasses <- c("Old-growth Forests","Ecological Reserve","Forested Swamps","Secondary Forests","Abandoned Agroforestry","Abandoned Plantation", "Selectively-logged Forests")
+      ForestPoly <- LaSelvaClass[LaSelvaClass$DESCRIPTIO %in% ForestClasses,]
+      # Remove forest area added in or after 1996
+       ForestPoly <- ForestPoly[!(ForestPoly$YEAR >= 1990),]
+      # Remove tiny fragment of abandoned plantation
+      ForestPoly <- ForestPoly[!(ForestPoly$LU00_UTM0_==68),]
     
     # Old growth forest area
     OldGrowthPoly <- ForestPoly[ForestPoly$DESCRIPTIO %in% c("Old-growth Forests","Ecological Reserve","Forested Swamps"),]
@@ -126,182 +124,201 @@
     # Secondary forest area
     SecondaryPoly <- ForestPoly[ForestPoly$DESCRIPTIO %in% c("Secondary Forests","Abandoned Agroforestry","Abandoned Plantation", "Selectively-logged Forests"),]
     
-  Forest09 <- raster::mask(CHM09mask,ForestPoly)
-  Forest19 <- raster::mask(CHM19mask,ForestPoly)
-
-  OldGrowth09 <- raster::mask(Forest09, OldGrowthPoly)
-  OldGrowth19 <- raster::mask(Forest19, OldGrowthPoly)
+  # Make rasters for all forst, old growth forest, and secondary forest  
+    Forest09 <- raster::mask(lidarCHM09,ForestPoly)
+    Forest19 <- raster::mask(lidarCHM19,ForestPoly)
   
-  Secondary09 <- raster::mask(Forest09, SecondaryPoly)
-  Secondary19 <- raster::mask(Forest19, SecondaryPoly)
+    OldGrowth09 <- raster::mask(Forest09, OldGrowthPoly)
+    OldGrowth19 <- raster::mask(Forest19, OldGrowthPoly)
+    
+    Secondary09 <- raster::mask(Forest09, SecondaryPoly)
+    Secondary19 <- raster::mask(Forest19, SecondaryPoly)
 
-##### Cycle through multiple gap height thresholds #####  
-gapHts <- seq(2,20,2)  
+##### Cycle through multiple gap height thresholds, calculating size-frequency distribution values #####  
+
+  # Use gap height thresholds from 2 m to 20 m, in increments of 2  
+    gapHts <- seq(2,20,2)  
   
-listGaps09 <- list()
-listGaps19 <- list()
-listGaps09_OldGrowth <- list()
-listGaps19_OldGrowth <- list()
-listGaps09_Secondary <- list()
-listGaps19_Secondary <- list()
+  # Make lists to hold vectors of gap sizes
+  # Calculate separately for all, old growth, and secondary forests  
+    listGaps09 <- list()
+    listGaps19 <- list()
+    listGaps09_OldGrowth <- list()
+    listGaps19_OldGrowth <- list()
+    listGaps09_Secondary <- list()
+    listGaps19_Secondary <- list()
 
-listFit09 <- list()
-listFit19 <- list()
-listFit09_OldGrowth <- list()
-listFit19_OldGrowth <- list()
-listFit09_Secondary <- list()
-listFit19_Secondary <- list()
+  # Make lists to hold gap size-freq distribution parameter from each MCMC step
+    listFit09 <- list()
+    listFit19 <- list()
+    listFit09_OldGrowth <- list()
+    listFit19_OldGrowth <- list()
+    listFit09_Secondary <- list()
+    listFit19_Secondary <- list()
 
+# Loop through height thresholds and estimate gap-size frequency distributions
+# NOTE: this takes ~2 hrs to run    
 set.seed(1)
 for(j in 1:length(gapHts)){
-  gapRaster09 <- makeGapRaster(CHMraster = Forest09, gapHeight = gapHts[j])
-  gapRaster19 <- makeGapRaster(CHMraster = Forest19, gapHeight = gapHts[j])
   
-  gapRaster09_OldGrowth <- makeGapRaster(CHMraster = OldGrowth09, gapHeight = gapHts[j])
-  gapRaster19_OldGrowth <- makeGapRaster(CHMraster = OldGrowth19, gapHeight = gapHts[j])
-  
-  gapRaster09_Secondary <- makeGapRaster(CHMraster = Secondary09, gapHeight = gapHts[j])
-  gapRaster19_Secondary <- makeGapRaster(CHMraster = Secondary19, gapHeight = gapHts[j])
-  
-  gaps09 <- getGapSizes(gapRaster09)
-  gaps19 <- getGapSizes(gapRaster19)
-  
-  gaps09_OldGrowth <- getGapSizes(gapRaster09_OldGrowth)
-  gaps19_OldGrowth <- getGapSizes(gapRaster19_OldGrowth)
-  
-  gaps09_Secondary <- getGapSizes(gapRaster09_Secondary)
-  gaps19_Secondary <- getGapSizes(gapRaster19_Secondary)
+  # Make a raster of gap pixels
+    gapRaster09 <- makeGapRaster(CHMraster = Forest09, gapHeight = gapHts[j])
+    gapRaster19 <- makeGapRaster(CHMraster = Forest19, gapHeight = gapHts[j])
+    
+    gapRaster09_OldGrowth <- makeGapRaster(CHMraster = OldGrowth09, gapHeight = gapHts[j])
+    gapRaster19_OldGrowth <- makeGapRaster(CHMraster = OldGrowth19, gapHeight = gapHts[j])
+    
+    gapRaster09_Secondary <- makeGapRaster(CHMraster = Secondary09, gapHeight = gapHts[j])
+    gapRaster19_Secondary <- makeGapRaster(CHMraster = Secondary19, gapHeight = gapHts[j])
+    
+  # Get a vector of all gap sizes (one entry per gap)
+    gaps09 <- getGapSizes(gapRaster09)
+    gaps19 <- getGapSizes(gapRaster19)
+    
+    gaps09_OldGrowth <- getGapSizes(gapRaster09_OldGrowth)
+    gaps19_OldGrowth <- getGapSizes(gapRaster19_OldGrowth)
+    
+    gaps09_Secondary <- getGapSizes(gapRaster09_Secondary)
+    gaps19_Secondary <- getGapSizes(gapRaster19_Secondary)
 
-  sims <- 100000
-  fit09 <- runMCMC(startvalue = optimize(dpl, data=gaps09, lower = 1.0001, upper = 20, maximum = T)$maximum, iterations = sims, data = gaps09)
-  fit19 <- runMCMC(startvalue = optimize(dpl, data=gaps19, lower = 1.0001, upper = 20, maximum = T)$maximum, iterations = sims, data = gaps19)
+  # Run MCMC to estimate gap size frequency distribution parameter  
+    sims <- 100000
+    fit09 <- runMCMC(startvalue = optimize(dpl, data=gaps09, lower = 1.0001, upper = 20, maximum = T)$maximum, iterations = sims, data = gaps09)
+    fit19 <- runMCMC(startvalue = optimize(dpl, data=gaps19, lower = 1.0001, upper = 20, maximum = T)$maximum, iterations = sims, data = gaps19)
+    
+    fit09_OldGrowth <- runMCMC(startvalue = optimize(dpl, data=gaps09_OldGrowth, lower = 1.0001, upper = 20, maximum = T)$maximum, iterations = sims, data = gaps09_OldGrowth)
+    fit19_OldGrowth <- runMCMC(startvalue = optimize(dpl, data=gaps19_OldGrowth, lower = 1.0001, upper = 20, maximum = T)$maximum, iterations = sims, data = gaps19_OldGrowth)
+    
+    fit09_Secondary <- runMCMC(startvalue = optimize(dpl, data=gaps09_Secondary, lower = 1.0001, upper = 20, maximum = T)$maximum, iterations = sims, data = gaps09_Secondary)
+    fit19_Secondary <- runMCMC(startvalue = optimize(dpl, data=gaps19_Secondary, lower = 1.0001, upper = 20, maximum = T)$maximum, iterations = sims, data = gaps19_Secondary) 
   
-  fit09_OldGrowth <- runMCMC(startvalue = optimize(dpl, data=gaps09_OldGrowth, lower = 1.0001, upper = 20, maximum = T)$maximum, iterations = sims, data = gaps09_OldGrowth)
-  fit19_OldGrowth <- runMCMC(startvalue = optimize(dpl, data=gaps19_OldGrowth, lower = 1.0001, upper = 20, maximum = T)$maximum, iterations = sims, data = gaps19_OldGrowth)
-  
-  fit09_Secondary <- runMCMC(startvalue = optimize(dpl, data=gaps09_Secondary, lower = 1.0001, upper = 20, maximum = T)$maximum, iterations = sims, data = gaps09_Secondary)
-  fit19_Secondary <- runMCMC(startvalue = optimize(dpl, data=gaps19_Secondary, lower = 1.0001, upper = 20, maximum = T)$maximum, iterations = sims, data = gaps19_Secondary) 
-
-  listGaps09[[j]] <- gaps09
-  listGaps19[[j]] <- gaps19
-  listGaps09_OldGrowth[[j]] <- gaps09_OldGrowth
-  listGaps19_OldGrowth[[j]] <- gaps19_OldGrowth
-  listGaps09_Secondary[[j]] <- gaps09_Secondary
-  listGaps19_Secondary[[j]] <- gaps19_Secondary
-  
-  listFit09[[j]] <- fit09
-  listFit19[[j]] <- fit19
-  listFit09_OldGrowth[[j]] <- fit09_OldGrowth
-  listFit19_OldGrowth[[j]] <- fit19_OldGrowth
-  listFit09_Secondary[[j]] <- fit09_Secondary
-  listFit19_Secondary[[j]] <- fit19_Secondary
-  
-  print(j)
+  # Save results in lists
+    listGaps09[[j]] <- gaps09
+    listGaps19[[j]] <- gaps19
+    listGaps09_OldGrowth[[j]] <- gaps09_OldGrowth
+    listGaps19_OldGrowth[[j]] <- gaps19_OldGrowth
+    listGaps09_Secondary[[j]] <- gaps09_Secondary
+    listGaps19_Secondary[[j]] <- gaps19_Secondary
+    
+    listFit09[[j]] <- fit09
+    listFit19[[j]] <- fit19
+    listFit09_OldGrowth[[j]] <- fit09_OldGrowth
+    listFit19_OldGrowth[[j]] <- fit19_OldGrowth
+    listFit09_Secondary[[j]] <- fit09_Secondary
+    listFit19_Secondary[[j]] <- fit19_Secondary
 }
 
 #### Consolidate results for different height threshholds ####
 
-gapAreaResults <- data.frame(forestType = rep(rep(c("All","OldGrowth","Secondary"),each=length(gapHts)),2),
-                             gapHt = rep(rep(gapHts,3),2),
-                             Year = rep(c(2009,2019),each=length(rep(gapHts,3))),
-                             Area = NA,
-                             LambdaMin = NA,
-                             LambdaMed = NA,
-                             LambdaMax = NA)
-      burnIn <- 5001
-      skipN <- 25
+# Make a data frame to store results (this is table )
+  gapAreaResults <- data.frame(forestType = rep(rep(c("All","OldGrowth","Secondary"),each=length(gapHts)),2),
+                               gapHt = rep(rep(gapHts,3),2),
+                               Year = rep(c(2009,2019),each=length(rep(gapHts,3))),
+                               Area = NA,
+                               LambdaMin = NA,
+                               LambdaMed = NA,
+                               LambdaMax = NA)
+# Define burn-in period and sampling periodicity for estimating gap size-frequency 
+# parameter from MCMC results
+    burnIn <- 5001
+    skipN <- 25
 
+# Cycle through gap thresholds to calculate results    
 for(i in 1:length(gapHts)){
   
-  area09 <- round(sum(listGaps09[[i]])*(1.25^2)/10000,2)
-  area19 <- round(sum(listGaps19[[i]])*(1.25^2)/10000,2)
+  # Add total area in gaps
+    area09 <- round(sum(listGaps09[[i]])*(1.25^2)/10000,2)
+    area19 <- round(sum(listGaps19[[i]])*(1.25^2)/10000,2)
+    
+    old09 <- round(sum(listGaps09_OldGrowth[[i]])*(1.25^2)/10000,2)
+    old19 <- round(sum(listGaps19_OldGrowth[[i]])*(1.25^2)/10000,2)
+    
+    sec09 <- round(sum(listGaps09_Secondary[[i]])*(1.25^2)/10000,2)
+    sec19 <- round(sum(listGaps19_Secondary[[i]])*(1.25^2)/10000,2)
+    
+  # Estimate lambda (gap size frequency parameter)
+    lambdaMin09 <- quantile(listFit09[[i]][[1]][seq(burnIn,sims,skipN)], 0.025)
+    lambdaMed09 <- quantile(listFit09[[i]][[1]][seq(burnIn,sims,skipN)], 0.50)
+    lambdaMax09 <- quantile(listFit09[[i]][[1]][seq(burnIn,sims,skipN)], 0.975)
+    
+    lambdaMin19 <- quantile(listFit19[[i]][[1]][seq(burnIn,sims,skipN)], 0.025)
+    lambdaMed19 <- quantile(listFit19[[i]][[1]][seq(burnIn,sims,skipN)], 0.50)
+    lambdaMax19 <- quantile(listFit19[[i]][[1]][seq(burnIn,sims,skipN)], 0.975)
+    
+    lambdaMin09old <- quantile(listFit09_OldGrowth[[i]][[1]][seq(burnIn,sims,skipN)], 0.025)
+    lambdaMed09old <- quantile(listFit09_OldGrowth[[i]][[1]][seq(burnIn,sims,skipN)], 0.50)
+    lambdaMax09old <- quantile(listFit09_OldGrowth[[i]][[1]][seq(burnIn,sims,skipN)], 0.975)
+    
+    lambdaMin19old <- quantile(listFit19_OldGrowth[[i]][[1]][seq(burnIn,sims,skipN)], 0.025)
+    lambdaMed19old <- quantile(listFit19_OldGrowth[[i]][[1]][seq(burnIn,sims,skipN)], 0.50)
+    lambdaMax19old <- quantile(listFit19_OldGrowth[[i]][[1]][seq(burnIn,sims,skipN)], 0.975)
+    
+    lambdaMin09sec <- quantile(listFit09_Secondary[[i]][[1]][seq(burnIn,sims,skipN)], 0.025)
+    lambdaMed09sec <- quantile(listFit09_Secondary[[i]][[1]][seq(burnIn,sims,skipN)], 0.50)
+    lambdaMax09sec <- quantile(listFit09_Secondary[[i]][[1]][seq(burnIn,sims,skipN)], 0.975)
+    
+    lambdaMin19sec <- quantile(listFit19_Secondary[[i]][[1]][seq(burnIn,sims,skipN)], 0.025)
+    lambdaMed19sec <- quantile(listFit19_Secondary[[i]][[1]][seq(burnIn,sims,skipN)], 0.50)
+    lambdaMax19sec <- quantile(listFit19_Secondary[[i]][[1]][seq(burnIn,sims,skipN)], 0.975)
   
-  old09 <- round(sum(listGaps09_OldGrowth[[i]])*(1.25^2)/10000,2)
-  old19 <- round(sum(listGaps19_OldGrowth[[i]])*(1.25^2)/10000,2)
-  
-  sec09 <- round(sum(listGaps09_Secondary[[i]])*(1.25^2)/10000,2)
-  sec19 <- round(sum(listGaps19_Secondary[[i]])*(1.25^2)/10000,2)
-  
-  lambdaMin09 <- quantile(listFit09[[i]][[1]][seq(burnIn,sims,skipN)], 0.025)
-  lambdaMed09 <- quantile(listFit09[[i]][[1]][seq(burnIn,sims,skipN)], 0.50)
-  lambdaMax09 <- quantile(listFit09[[i]][[1]][seq(burnIn,sims,skipN)], 0.975)
-  
-  lambdaMin19 <- quantile(listFit19[[i]][[1]][seq(burnIn,sims,skipN)], 0.025)
-  lambdaMed19 <- quantile(listFit19[[i]][[1]][seq(burnIn,sims,skipN)], 0.50)
-  lambdaMax19 <- quantile(listFit19[[i]][[1]][seq(burnIn,sims,skipN)], 0.975)
-  
-  lambdaMin09old <- quantile(listFit09_OldGrowth[[i]][[1]][seq(burnIn,sims,skipN)], 0.025)
-  lambdaMed09old <- quantile(listFit09_OldGrowth[[i]][[1]][seq(burnIn,sims,skipN)], 0.50)
-  lambdaMax09old <- quantile(listFit09_OldGrowth[[i]][[1]][seq(burnIn,sims,skipN)], 0.975)
-  
-  lambdaMin19old <- quantile(listFit19_OldGrowth[[i]][[1]][seq(burnIn,sims,skipN)], 0.025)
-  lambdaMed19old <- quantile(listFit19_OldGrowth[[i]][[1]][seq(burnIn,sims,skipN)], 0.50)
-  lambdaMax19old <- quantile(listFit19_OldGrowth[[i]][[1]][seq(burnIn,sims,skipN)], 0.975)
-  
-  lambdaMin09sec <- quantile(listFit09_Secondary[[i]][[1]][seq(burnIn,sims,skipN)], 0.025)
-  lambdaMed09sec <- quantile(listFit09_Secondary[[i]][[1]][seq(burnIn,sims,skipN)], 0.50)
-  lambdaMax09sec <- quantile(listFit09_Secondary[[i]][[1]][seq(burnIn,sims,skipN)], 0.975)
-  
-  lambdaMin19sec <- quantile(listFit19_Secondary[[i]][[1]][seq(burnIn,sims,skipN)], 0.025)
-  lambdaMed19sec <- quantile(listFit19_Secondary[[i]][[1]][seq(burnIn,sims,skipN)], 0.50)
-  lambdaMax19sec <- quantile(listFit19_Secondary[[i]][[1]][seq(burnIn,sims,skipN)], 0.975)
-  
-  gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2009" & gapAreaResults$forestType == "All","Area"] <- area09
-  gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2019" & gapAreaResults$forestType == "All","Area"] <- area19
-  gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2009" & gapAreaResults$forestType == "OldGrowth","Area"] <- old09
-  gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2019" & gapAreaResults$forestType == "OldGrowth","Area"] <- old19
-  gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2009" & gapAreaResults$forestType == "Secondary","Area"] <- sec09
-  gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2019" & gapAreaResults$forestType == "Secondary","Area"] <- sec19
-  
-  gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2009" & gapAreaResults$forestType == "All","LambdaMin"] <- lambdaMin09
-  gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2019" & gapAreaResults$forestType == "All","LambdaMin"] <- lambdaMin19
-  gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2009" & gapAreaResults$forestType == "OldGrowth","LambdaMin"] <- lambdaMin09old
-  gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2019" & gapAreaResults$forestType == "OldGrowth","LambdaMin"] <- lambdaMin19old
-  gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2009" & gapAreaResults$forestType == "Secondary","LambdaMin"] <- lambdaMin09sec
-  gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2019" & gapAreaResults$forestType == "Secondary","LambdaMin"] <- lambdaMin19sec
-  
-  gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2009" & gapAreaResults$forestType == "All","LambdaMed"] <- lambdaMed09
-  gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2019" & gapAreaResults$forestType == "All","LambdaMed"] <- lambdaMed19
-  gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2009" & gapAreaResults$forestType == "OldGrowth","LambdaMed"] <- lambdaMed09old
-  gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2019" & gapAreaResults$forestType == "OldGrowth","LambdaMed"] <- lambdaMed19old
-  gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2009" & gapAreaResults$forestType == "Secondary","LambdaMed"] <- lambdaMed09sec
-  gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2019" & gapAreaResults$forestType == "Secondary","LambdaMed"] <- lambdaMed19sec
-  
-  gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2009" & gapAreaResults$forestType == "All","LambdaMax"] <- lambdaMax09
-  gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2019" & gapAreaResults$forestType == "All","LambdaMax"] <- lambdaMax19
-  gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2009" & gapAreaResults$forestType == "OldGrowth","LambdaMax"] <- lambdaMax09old
-  gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2019" & gapAreaResults$forestType == "OldGrowth","LambdaMax"] <- lambdaMax19old
-  gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2009" & gapAreaResults$forestType == "Secondary","LambdaMax"] <- lambdaMax09sec
-  gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2019" & gapAreaResults$forestType == "Secondary","LambdaMax"] <- lambdaMax19sec
-  
+  # Store results in data frame  
+    gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2009" & gapAreaResults$forestType == "All","Area"] <- area09
+    gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2019" & gapAreaResults$forestType == "All","Area"] <- area19
+    gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2009" & gapAreaResults$forestType == "OldGrowth","Area"] <- old09
+    gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2019" & gapAreaResults$forestType == "OldGrowth","Area"] <- old19
+    gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2009" & gapAreaResults$forestType == "Secondary","Area"] <- sec09
+    gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2019" & gapAreaResults$forestType == "Secondary","Area"] <- sec19
+    
+    gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2009" & gapAreaResults$forestType == "All","LambdaMin"] <- lambdaMin09
+    gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2019" & gapAreaResults$forestType == "All","LambdaMin"] <- lambdaMin19
+    gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2009" & gapAreaResults$forestType == "OldGrowth","LambdaMin"] <- lambdaMin09old
+    gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2019" & gapAreaResults$forestType == "OldGrowth","LambdaMin"] <- lambdaMin19old
+    gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2009" & gapAreaResults$forestType == "Secondary","LambdaMin"] <- lambdaMin09sec
+    gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2019" & gapAreaResults$forestType == "Secondary","LambdaMin"] <- lambdaMin19sec
+    
+    gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2009" & gapAreaResults$forestType == "All","LambdaMed"] <- lambdaMed09
+    gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2019" & gapAreaResults$forestType == "All","LambdaMed"] <- lambdaMed19
+    gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2009" & gapAreaResults$forestType == "OldGrowth","LambdaMed"] <- lambdaMed09old
+    gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2019" & gapAreaResults$forestType == "OldGrowth","LambdaMed"] <- lambdaMed19old
+    gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2009" & gapAreaResults$forestType == "Secondary","LambdaMed"] <- lambdaMed09sec
+    gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2019" & gapAreaResults$forestType == "Secondary","LambdaMed"] <- lambdaMed19sec
+    
+    gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2009" & gapAreaResults$forestType == "All","LambdaMax"] <- lambdaMax09
+    gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2019" & gapAreaResults$forestType == "All","LambdaMax"] <- lambdaMax19
+    gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2009" & gapAreaResults$forestType == "OldGrowth","LambdaMax"] <- lambdaMax09old
+    gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2019" & gapAreaResults$forestType == "OldGrowth","LambdaMax"] <- lambdaMax19old
+    gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2009" & gapAreaResults$forestType == "Secondary","LambdaMax"] <- lambdaMax09sec
+    gapAreaResults[gapAreaResults$gapHt == gapHts[i] & gapAreaResults$Year == "2019" & gapAreaResults$forestType == "Secondary","LambdaMax"] <- lambdaMax19sec
 }
 
 # Quantify change in gap area for results
-  haTot <- length(Forest09@data@values[!is.na(Forest09@data@values)])*(1.25^2)/10000
-  haOld <- length(OldGrowth09@data@values[!is.na(OldGrowth09@data@values)])*(1.25^2)/10000
-  Sec09Values <- raster::getValues(Secondary09)
-  haSec <- length(Sec09Values[!is.na(Sec09Values)])*(1.25^2)/10000
+    
+  # Calculate total area in all, old growth, and secondary forests  
+    haTot <- length(Forest09@data@values[!is.na(Forest09@data@values)])*(1.25^2)/10000
+    haOld <- length(OldGrowth09@data@values[!is.na(OldGrowth09@data@values)])*(1.25^2)/10000
+    Sec09Values <- raster::getValues(Secondary09)
+    haSec <- length(Sec09Values[!is.na(Sec09Values)])*(1.25^2)/10000
   
-  gapAreaResults$pctArea <- NA
-  gapAreaResults[gapAreaResults$forestType=="All","pctArea"] <- gapAreaResults[gapAreaResults$forestType=="All","Area"]/haTot*100
-  gapAreaResults[gapAreaResults$forestType=="OldGrowth","pctArea"] <- gapAreaResults[gapAreaResults$forestType=="OldGrowth","Area"]/haOld*100
-  gapAreaResults[gapAreaResults$forestType=="Secondary","pctArea"] <- gapAreaResults[gapAreaResults$forestType=="Secondary","Area"]/haSec*100
-      
-  pctIncrease <- round(gapAreaResults[gapAreaResults$forestType=="All" & gapAreaResults$Year==2019,"pctArea"]-gapAreaResults[gapAreaResults$forestType=="All" & gapAreaResults$Year==2009,"pctArea"],1)
-  propIncresase <- pctIncrease/gapAreaResults[gapAreaResults$forestType=="All" & gapAreaResults$Year==2009,"pctArea"]*100      
-
-  pctIncreaseO <- round(gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2019,"pctArea"]-gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2009,"pctArea"],1)
-  propIncreaseO <- pctIncrease/gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2009,"pctArea"]*100      
-
-  pctIncreaseS <- round(gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2019,"pctArea"]-gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2009,"pctArea"],1)
-  propIncreaseS <- pctIncrease/gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2009,"pctArea"]*100      
-
-  mean(propIncreaseO)
-  mean(propIncreaseS)
+  # Calculate gap area as a percent of total area for each forest class  
+    gapAreaResults$pctArea <- NA
+    gapAreaResults[gapAreaResults$forestType=="All","pctArea"] <- gapAreaResults[gapAreaResults$forestType=="All","Area"]/haTot*100
+    gapAreaResults[gapAreaResults$forestType=="OldGrowth","pctArea"] <- gapAreaResults[gapAreaResults$forestType=="OldGrowth","Area"]/haOld*100
+    gapAreaResults[gapAreaResults$forestType=="Secondary","pctArea"] <- gapAreaResults[gapAreaResults$forestType=="Secondary","Area"]/haSec*100
+        
+  # Calculate percent increase in gap area
+    pctIncrease <- round(gapAreaResults[gapAreaResults$forestType=="All" & gapAreaResults$Year==2019,"pctArea"]-gapAreaResults[gapAreaResults$forestType=="All" & gapAreaResults$Year==2009,"pctArea"],1)
+    propIncresase <- pctIncrease/gapAreaResults[gapAreaResults$forestType=="All" & gapAreaResults$Year==2009,"pctArea"]*100      
   
-  write.csv(gapAreaResults, file = "TableS1.csv", row.names = F)
+    pctIncreaseO <- round(gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2019,"pctArea"]-gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2009,"pctArea"],1)
+    propIncreaseO <- pctIncrease/gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2009,"pctArea"]*100      
   
-#### Fig 2: gap area and scaling exponent vs. height ####
+    pctIncreaseS <- round(gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2019,"pctArea"]-gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2009,"pctArea"],1)
+    propIncreaseS <- pctIncrease/gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2009,"pctArea"]*100      
+
+    mean(propIncreaseO)
+    mean(propIncreaseS)
+  
+#### Plot Fig 2: gap area and scaling parameter vs. height ####
 
      par(mfrow=c(1,2), mar=c(2,2,1,1), oma=c(2,2,0,0)) 
      
@@ -362,110 +379,7 @@ for(i in 1:length(gapHts)){
       mtext(side = 1, line = 2.3,expression(lambda), cex=1.2)
       
       
-#### Fig. S2: gap area and scaling exponent vs. height by forest type ####
-      par(mfrow=c(2,2), mar=c(2,2,1,1), oma=c(2,2,0,0)) 
-     
-      plot(gapHt ~ pctArea, data = gapAreaResults[gapAreaResults$forestType=="OldGrowth",],
-      xlim=range(c(gapAreaResults$pctArea,gapAreaResults$pctArea)),
-      type = "n", 
-      xlab = NA, ylab = NA)
-      
-      lines(gapHt ~ pctArea, data = gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2009,],
-             col = "black",
-             lwd=2)
-      lines(gapHt ~ pctArea, data = gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2019,],
-             col = "red",
-             lwd=2)
-      
-       text(x=1.2, y=20, "A", cex=1.1)
-       
-             legend(x=15,y=10,bty="n",
-             c(2009,2019),
-             seg.len = 0.5,x.intersp = 0.5,
-             col=c("black","red"),
-             lwd=3, cex=1.3)
-       
-
-      mtext(side = 2, line = 0, expression(Gap~height~("m")), outer = T)
-      
-     plot(gapHt ~ LambdaMin, data = gapAreaResults[gapAreaResults$forestType=="OldGrowth",],
-          xlim=range(c(gapAreaResults$LambdaMin,gapAreaResults$LambdaMax))+c(-0.02,0),
-          type = "n", 
-          xlab = NA, ylab = NA)
-     
-     arrows(x0 = gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2009,"LambdaMin"],
-            x1 = gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2009,"LambdaMax"],
-            y0 = gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2009,"gapHt"],
-            y1 = gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2009,"gapHt"],
-            col = adjustcolor("black",alpha.f = 0.8),
-            angle = 90, lwd=1.5, length = 0.05, code=3)
-     
-      arrows(x0 = gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2019,"LambdaMin"],
-            x1 = gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2019,"LambdaMax"],
-            y0 = gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2019,"gapHt"],
-            y1 = gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2019,"gapHt"],
-            col = adjustcolor("red",alpha.f = 0.8),
-            angle = 90, lwd=1.5, length = 0.05, code=3)
-      
-      text(x=1.33, y=20, "B", cex=1.1)
-      
-      
-      points(gapHt ~ LambdaMed, data = gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2009,],
-             col = "black",
-             pch = 20, cex = 1.5)
-      points(gapHt ~ LambdaMed, data = gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2019,],
-             col = "red",
-             pch = 20, cex = 1.5)
-      
-      
-      # SECONDARY
-      plot(gapHt ~ pctArea, data = gapAreaResults[gapAreaResults$forestType=="Secondary",],
-      xlim=range(c(gapAreaResults$pctArea,gapAreaResults$pctArea)),
-      type = "n", 
-      xlab = NA, ylab = NA)
-      
-      lines(gapHt ~ pctArea, data = gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2009,],
-             col = "black",
-             lwd=2)
-      lines(gapHt ~ pctArea, data = gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2019,],
-             col = "red",
-             lwd=2)
-      
-       text(x=1.2, y=20, "C", cex=1.1)
-       
-      mtext(side = 1, line = 2.3,expression(Gap~area~("%")))
-      
-     plot(gapHt ~ LambdaMin, data = gapAreaResults[gapAreaResults$forestType=="Secondary",],
-          xlim=range(c(gapAreaResults$LambdaMin,gapAreaResults$LambdaMax))+c(-0.02,0),
-          type = "n", 
-          xlab = NA, ylab = NA)
-     
-     arrows(x0 = gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2009,"LambdaMin"],
-            x1 = gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2009,"LambdaMax"],
-            y0 = gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2009,"gapHt"],
-            y1 = gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2009,"gapHt"],
-            col = adjustcolor("black",alpha.f = 0.8),
-            angle = 90, lwd=1.5, length = 0.05, code=3)
-     
-      arrows(x0 = gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2019,"LambdaMin"],
-            x1 = gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2019,"LambdaMax"],
-            y0 = gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2019,"gapHt"],
-            y1 = gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2019,"gapHt"],
-            col = adjustcolor("red",alpha.f = 0.8),
-            angle = 90, lwd=1.5, length = 0.05, code=3)
-      
-      text(x=1.33, y=20, "D", cex=1.1)
-      
-      
-      points(gapHt ~ LambdaMed, data = gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2009,],
-             col = "black",
-             pch = 20, cex = 1.5)
-      points(gapHt ~ LambdaMed, data = gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2019,],
-             col = "red",
-             pch = 20, cex = 1.5)
-      
-      mtext(side = 1, line = 2,expression(lambda))
-#### Fig S3: plots of size frequency ####
+#### Plot Fig S5: plots of size frequency ####
     
       par(mfrow=c(3,2), mar=c(2,2,1,1), oma=c(2,3,0,0))
       
@@ -597,4 +511,108 @@ for(i in 1:length(gapHts)){
       
       mtext(expression(Gap~size~(m^{2})),side=1,outer=T, cex=1.3, line=1)
       mtext(expression(Frequency),side=2,outer=T, cex=1.3, line=0.5) 
-            
+      
+#### Plot Fig. S6: gap area and scaling parameter vs. height by forest type ####
+      par(mfrow=c(2,2), mar=c(2,2,1,1), oma=c(2,2,0,0)) 
+     
+      plot(gapHt ~ pctArea, data = gapAreaResults[gapAreaResults$forestType=="OldGrowth",],
+      xlim=range(c(gapAreaResults$pctArea,gapAreaResults$pctArea)),
+      type = "n", 
+      xlab = NA, ylab = NA)
+      
+      lines(gapHt ~ pctArea, data = gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2009,],
+             col = "black",
+             lwd=2)
+      lines(gapHt ~ pctArea, data = gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2019,],
+             col = "red",
+             lwd=2)
+      
+       text(x=1.2, y=20, "A", cex=1.1)
+       
+             legend(x=15,y=10,bty="n",
+             c(2009,2019),
+             seg.len = 0.5,x.intersp = 0.5,
+             col=c("black","red"),
+             lwd=3, cex=1.3)
+       
+
+      mtext(side = 2, line = 0, expression(Gap~height~("m")), outer = T)
+      
+     plot(gapHt ~ LambdaMin, data = gapAreaResults[gapAreaResults$forestType=="OldGrowth",],
+          xlim=range(c(gapAreaResults$LambdaMin,gapAreaResults$LambdaMax))+c(-0.02,0),
+          type = "n", 
+          xlab = NA, ylab = NA)
+     
+     arrows(x0 = gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2009,"LambdaMin"],
+            x1 = gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2009,"LambdaMax"],
+            y0 = gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2009,"gapHt"],
+            y1 = gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2009,"gapHt"],
+            col = adjustcolor("black",alpha.f = 0.8),
+            angle = 90, lwd=1.5, length = 0.05, code=3)
+     
+      arrows(x0 = gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2019,"LambdaMin"],
+            x1 = gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2019,"LambdaMax"],
+            y0 = gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2019,"gapHt"],
+            y1 = gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2019,"gapHt"],
+            col = adjustcolor("red",alpha.f = 0.8),
+            angle = 90, lwd=1.5, length = 0.05, code=3)
+      
+      text(x=1.33, y=20, "B", cex=1.1)
+      
+      
+      points(gapHt ~ LambdaMed, data = gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2009,],
+             col = "black",
+             pch = 20, cex = 1.5)
+      points(gapHt ~ LambdaMed, data = gapAreaResults[gapAreaResults$forestType=="OldGrowth" & gapAreaResults$Year==2019,],
+             col = "red",
+             pch = 20, cex = 1.5)
+      
+      
+      # SECONDARY
+      plot(gapHt ~ pctArea, data = gapAreaResults[gapAreaResults$forestType=="Secondary",],
+      xlim=range(c(gapAreaResults$pctArea,gapAreaResults$pctArea)),
+      type = "n", 
+      xlab = NA, ylab = NA)
+      
+      lines(gapHt ~ pctArea, data = gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2009,],
+             col = "black",
+             lwd=2)
+      lines(gapHt ~ pctArea, data = gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2019,],
+             col = "red",
+             lwd=2)
+      
+       text(x=1.2, y=20, "C", cex=1.1)
+       
+      mtext(side = 1, line = 2.3,expression(Gap~area~("%")))
+      
+     plot(gapHt ~ LambdaMin, data = gapAreaResults[gapAreaResults$forestType=="Secondary",],
+          xlim=range(c(gapAreaResults$LambdaMin,gapAreaResults$LambdaMax))+c(-0.02,0),
+          type = "n", 
+          xlab = NA, ylab = NA)
+     
+     arrows(x0 = gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2009,"LambdaMin"],
+            x1 = gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2009,"LambdaMax"],
+            y0 = gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2009,"gapHt"],
+            y1 = gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2009,"gapHt"],
+            col = adjustcolor("black",alpha.f = 0.8),
+            angle = 90, lwd=1.5, length = 0.05, code=3)
+     
+      arrows(x0 = gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2019,"LambdaMin"],
+            x1 = gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2019,"LambdaMax"],
+            y0 = gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2019,"gapHt"],
+            y1 = gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2019,"gapHt"],
+            col = adjustcolor("red",alpha.f = 0.8),
+            angle = 90, lwd=1.5, length = 0.05, code=3)
+      
+      text(x=1.33, y=20, "D", cex=1.1)
+      
+      
+      points(gapHt ~ LambdaMed, data = gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2009,],
+             col = "black",
+             pch = 20, cex = 1.5)
+      points(gapHt ~ LambdaMed, data = gapAreaResults[gapAreaResults$forestType=="Secondary" & gapAreaResults$Year==2019,],
+             col = "red",
+             pch = 20, cex = 1.5)
+      
+      mtext(side = 1, line = 2,expression(lambda))
+      
