@@ -108,9 +108,10 @@
       lidarCHM19@data@values[lidarCHM19@data@values < 0 & !is.na(lidarCHM19@data@values)] <- 0
 
     # Make forest type polygons
+      # Read shapefile
       LaSelvaClass <- rgdal::readOGR("LandUseShapefile/LU2000.shp")
+      
       # All forested area
-      LaSelvaClass <- rgdal::readOGR("LU2000.shp")
       ForestClasses <- c("Old-growth Forests","Ecological Reserve","Forested Swamps","Secondary Forests","Abandoned Agroforestry","Abandoned Plantation", "Selectively-logged Forests")
       ForestPoly <- LaSelvaClass[LaSelvaClass$DESCRIPTIO %in% ForestClasses,]
       # Remove forest area added in or after 1996
