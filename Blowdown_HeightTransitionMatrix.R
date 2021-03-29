@@ -197,7 +197,7 @@ par(mfrow=c(1,1), mar=c(3,3,0,0), oma=c(2,2,2,2))
   
   polygon(x=c(SS_summary$index,rev(SS_summary$index)),
           y=c(SS_summary$p2.5,rev(SS_summary$p97.5)),
-          col=adjustcolor("black",alpha.f = 0.4), border=NA)
+          col=adjustcolor("grey"), border=NA)
 
   lines(x=1:dim(SS_summary)[1], y=apply(X=transition, MAR=1, FUN=sum), lwd=3, lty=2)
   lines(x=1:dim(SS_summary)[1], y=apply(X=transition, MAR=2, FUN=sum), lwd=3, lty=1)
@@ -207,7 +207,7 @@ par(mfrow=c(1,1), mar=c(3,3,0,0), oma=c(2,2,2,2))
          lty=c(1,2), lwd=3, cex=1)
   legend(x=27,y=2930,bty="n",
          c("Projected steady state"),
-         col=adjustcolor("black",alpha.f = 0.4),
+         col=adjustcolor("grey"),
          pch=15, cex=1)
   
   mtext("Height (m)",side=1,outer=T,line=-0.5, cex=1.2)
