@@ -161,7 +161,7 @@
     paste0("[",round(quantile(AGBresults$secondaryForestAGBchange,0.025),1),", ",round(quantile(AGBresults$secondaryForestAGBchange,0.975),1),"]")
     
     
-  # Calculate area in each forest type
+  # Calculate area in each forest type, and verify both years match
     length(raster::mask(AGB09,ForestPoly)@data@values[!is.na(raster::mask(AGB09,ForestPoly)@data@values)])/2 # Divide by 2 to convert from 0.5 ha pixels to area in ha
     length(raster::mask(AGB09,OldGrowthPoly)@data@values[!is.na(raster::mask(AGB09,OldGrowthPoly)@data@values)])/2
     length(raster::mask(AGB09,SecondaryPoly)@data@values[!is.na(raster::mask(AGB09,SecondaryPoly)@data@values)])/2
